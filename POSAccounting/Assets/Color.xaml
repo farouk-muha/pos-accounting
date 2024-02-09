@@ -1,0 +1,67 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:POSAccounting.Assets">
+
+    <Color x:Key="LightBlue">#FFDCE9EF</Color>
+    <Color x:Key="Blue">#FF49A1F9</Color>
+    <Color x:Key="DarkBlue">#FF178FD6</Color>
+    <Color x:Key="blue2">#FF61A8C9</Color>
+    <Color x:Key="blue3">#FF3F9BC5</Color>
+    <Color x:Key="NavyColor">#FF1F374C</Color>
+    <Color x:Key="LightNavyColor">#FF3E698F</Color>
+    <Color x:Key="LightRed">#FFDA677C</Color>
+    <Color x:Key="LightGreen">#FF19C18C</Color>
+    <Color x:Key="DarkGreen">#FF19C18C</Color>
+    <Color x:Key="LightGold">#FFD2D67B</Color>
+    <Color x:Key="GoogleBlue">#4285F4</Color>
+    <Color x:Key="GoogleOrange">#FBBC05</Color>
+    <Color x:Key="GoogleRed">#EA4335</Color>
+    <Color x:Key="GoogleNavy">#FF4C6D9E</Color>
+    <Color x:Key="GoogleGreen">#FF369C52</Color>
+    <Color x:Key="DarkWhite">#FFE6E6E6</Color>
+    <Color x:Key="White">#FFFAFBFD</Color>
+    <Color x:Key="WhiteTxt">#FFEADEDE</Color>
+    <Color x:Key="MatGreen">#FFAAD3AA</Color>
+    <Color x:Key="MatRed">#FFE4D0D0</Color>
+    <Color x:Key="MatBlue">#FFD0E1E4</Color>
+
+
+    <SolidColorBrush x:Key="LightBlueBrush" Color="{StaticResource LightBlue}"/>
+    <SolidColorBrush x:Key="BlueBrush" Color="{StaticResource Blue}"/>
+    <SolidColorBrush x:Key="DarkBlueBrush" Color="{StaticResource DarkBlue}"/>
+    <SolidColorBrush x:Key="blue2Brush" Color="{StaticResource blue2}"/>
+    <SolidColorBrush x:Key="blue3Brush" Color="{StaticResource blue3}"/>
+    <SolidColorBrush x:Key="NavyBrush" Color="{StaticResource NavyColor}"/>
+    <SolidColorBrush x:Key="LightNavyBrush" Color="{StaticResource LightNavyColor}"/>
+    <SolidColorBrush x:Key="LightRedBrush" Color="{StaticResource LightRed}"/>
+    <SolidColorBrush x:Key="LightGreenBrush" Color="{StaticResource LightGreen}"/>
+    <SolidColorBrush x:Key="LightGoldBrush" Color="{StaticResource LightGold}"/>
+    <SolidColorBrush x:Key="MenuBackGroundColor" Color="{StaticResource LightBlue}"/>
+    <SolidColorBrush x:Key="WindowBackGround" Color="{StaticResource White}"/>
+    <SolidColorBrush x:Key="DarkWhiteBrush" Color="{StaticResource DarkWhite}"/>
+    <SolidColorBrush x:Key="WhiteBrush" Color="{StaticResource White}"/>
+    <SolidColorBrush x:Key="WhiteTxtBrush" Color="{StaticResource WhiteTxt}"/>
+    <SolidColorBrush x:Key="Gray" Color="#FFCBD2D8"/>
+    <SolidColorBrush x:Key="Gray1" Color="#FFE6E6E6"/>
+    <SolidColorBrush x:Key="MatGreenBrush" Color="{StaticResource MatGreen}"/>
+    <SolidColorBrush x:Key="MatRedBursh" Color="{StaticResource MatRed}"/>
+    <SolidColorBrush x:Key="MatBlueBursh" Color="{StaticResource MatBlue}"/>
+
+
+    <!--border-->
+    <SolidColorBrush x:Key="GoogleBlueBrush" Color="{StaticResource GoogleBlue}"/>
+    <SolidColorBrush x:Key="GoogleOrangeBrush" Color="{StaticResource GoogleOrange}"/>
+    <SolidColorBrush x:Key="GoogleRedBrush" Color="{StaticResource GoogleRed}"/>
+    <SolidColorBrush x:Key="GoogleNavyBrush" Color="{StaticResource GoogleNavy}"/>
+    <SolidColorBrush x:Key="GoogleGreenBrush" Color="{StaticResource GoogleGreen}"/>
+
+    <!--border-->
+    <SolidColorBrush x:Key="WindowTitleBGColor" Color="{StaticResource DarkBlue}"/>
+    
+    <!--button-->
+    <SolidColorBrush x:Key="ToolBarBtnBackGroundColor" Color="{StaticResource DarkBlue}"/>
+    <SolidColorBrush x:Key="SearchBackGroundColor" Color="{StaticResource DarkBlue}"/>
+    <SolidColorBrush x:Key="PageBtnBackGroundColor" Color="{StaticResource DarkBlue}"/>
+    <SolidColorBrush x:Key="PublicBtnBG_Color" Color="{StaticResource DarkBlue}"/>
+
+</ResourceDictionary>

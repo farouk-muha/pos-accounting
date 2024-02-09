@@ -1,0 +1,505 @@
+﻿<Application x:Class="POSAccounting.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:POSAccounting"
+              xmlns:Utils="clr-namespace:POSAccounting.Utils"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity">
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Assets/Color.xaml" />
+                <!-- MahApps.Metro resource dictionaries. Make sure that all file names are Case Sensitive! -->
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+                
+                
+                <!-- Theme setting -->
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/Light.Blue.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <!--<Style TargetType="{x:Type Control}" x:Key="baseStyle">
+              <Setter Property="FontSize" Value="100" />
+               <Setter Property="Background" Value="Black"/>
+           </Style>-->
+
+            <!--window-->
+            <Style TargetType="Window" x:Key="BaseWindow">
+                <Setter Property="FlowDirection" Value="RightToLeft"/>
+            </Style>
+
+            <!--Converters -->
+            <Utils:FlopBoolean x:Key="dateConverter"/>
+            <!--user control-->
+            <Style TargetType="UserControl" x:Key="BaseUC">
+                <Setter Property="FlowDirection" Value="RightToLeft"/>
+            </Style>
+
+            <!--Stack panel-->
+            <Style TargetType="{x:Type StackPanel}" x:Key="StatisticStackPanel">
+                <Setter Property="Background" Value="{StaticResource ToolBarBtnBackGroundColor}"/>
+                <Setter Property="MinHeight" Value="70"/>
+                <Setter Property="Width" Value="200"/>
+            </Style>
+
+
+            <!--Text View-->
+            <Style TargetType="{x:Type TextBlock}" x:Key="H1TextBlock">
+                <Setter Property="FontSize" Value="21" />
+                <Setter Property="Foreground" Value="Black"/>
+            </Style>
+            <Style TargetType="{x:Type TextBlock}" x:Key="StatisticTextBlock">
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="TextWrapping" Value="Wrap"/>
+                <Setter Property="HorizontalAlignment" Value="Center" />
+            </Style>
+            <Style TargetType="{x:Type TextBlock}" x:Key="bodyTextBlcok">
+                <Setter Property="FontSize" Value="12" />
+            </Style>
+            <Style TargetType="{x:Type TextBlock}" x:Key="TitleTextBlock">
+                <Setter Property="FontSize" Value="14pt" />
+                <Setter Property="Foreground" Value="White"/>
+            </Style>
+
+            <!--border-->
+            <Style TargetType="{x:Type Border}" x:Key="TitleBorder">
+                <Setter Property="Height" Value="30" />
+                <Setter Property="Background" Value="{StaticResource WindowTitleBGColor}"/>
+            </Style>
+
+
+            <!--Text box-->
+            <Style TargetType="{x:Type TextBox}" x:Key="InputTextBox" BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">
+                <Setter Property="FontSize" Value="21" />
+            </Style>
+
+            <Style TargetType="{x:Type TextBox}" x:Key="SearchTextBox" BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">
+                <Setter Property="FontSize" Value="14" />
+                <!--<Style.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="BorderBrush" Value="Black" />
+                        <Setter Property="BorderThickness" Value="1" />
+                    </Style>
+                </Style.Resources>-->
+            </Style>
+            <Style x:Key="smallTxtBox" TargetType="{x:Type TextBox}">
+                <Setter Property="Height" Value="15"/>
+                <Setter Property="Height" Value="8"/>
+            </Style>
+
+
+            <Style x:Key="TransparentStyle" TargetType="{x:Type Button}">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Background="{TemplateBinding Background}" BorderBrush="{StaticResource PageBtnBackGroundColor}" BorderThickness="1">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="{StaticResource PageBtnBackGroundColor}"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style TargetType="{x:Type Button}" x:Key="pageBtnStyle" BasedOn="{StaticResource TransparentStyle}">
+                <Setter Property="FontSize" Value="14.667"/>
+                <Setter Property="Width" Value="25"/>
+                <Setter Property="Height" Value="25"/>
+            </Style>
+
+            <!--DatePicker-->
+            <Style x:Key="MySty" TargetType="DatePicker">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="DatePicker">
+                            <!-- Modified template for DatePickerTextBox goes here -->
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+
+            <Style x:Key="font_style" TargetType="TextBlock">
+                <Setter Property="FontFamily" Value="Fonts/Roboto-Light.ttf #Roboto"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="FontSize" Value="20"/>
+            </Style>
+
+
+            <!-- datagrid style -->
+            <SolidColorBrush x:Key="DG_HeadrBG_Color" Color="#FF49A1F9"/>
+            <SolidColorBrush x:Key="DG_BG_Color" Color="#FFF9FAFB"/>
+            <SolidColorBrush x:Key="DG_BG_RowHover" Color="#FFCBD2D8"/>
+            <SolidColorBrush x:Key="DG_BG_RowSelected" Color="#FFE6E6E6"/>
+            <SolidColorBrush x:Key="DG_FG_RowSelected" Color="#FF060000"/>
+            <!-- datagrid -->
+            <Style TargetType="DataGrid" x:Key="MyDG" BasedOn="{StaticResource {x:Type DataGrid}}">
+                <Setter Property="IsReadOnly" Value="True"/>
+                <Setter Property="CanUserAddRows" Value="False"/>
+                <Setter Property="AutoGenerateColumns" Value="False"/>
+                <Setter Property="CanUserResizeColumns" Value="False"/>
+                <Setter Property="GridLinesVisibility" Value="All"/>
+                <Setter Property="FontSize" Value="14"/>
+            </Style>
+            <Style TargetType="DataGrid" x:Key="MyEdtDG" BasedOn="{StaticResource {x:Type DataGrid}}">
+                <Setter Property="IsReadOnly" Value="False"/>
+                <Setter Property="CanUserAddRows" Value="True"/>
+                <Setter Property="AutoGenerateColumns" Value="False"/>
+                <Setter Property="CanUserResizeColumns" Value="False"/>
+                <Setter Property="GridLinesVisibility" Value="All"/>
+                <Setter Property="FontSize" Value="14"/>
+            </Style>
+            <!-- DataGridColumnHeader style -->
+            <Style x:Key="MyHeaderStyle" TargetType="{x:Type DataGridColumnHeader}" BasedOn="{StaticResource {x:Type DataGridColumnHeader}}">
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="Background" Value="{StaticResource DG_HeadrBG_Color}"/>
+                <Setter Property="Height" Value="30"/>
+                <Setter Property="Padding" Value="10,0,0,0"/>
+            </Style>
+            <!-- DataGridRow style -->
+            <Style x:Key="MyDG_RowStyle" TargetType="DataGridRow" BasedOn="{StaticResource {x:Type DataGridRow}}">
+                <Setter Property="MinHeight" Value="30"/>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="{StaticResource DG_BG_RowHover}" />
+                    </Trigger>
+                    <Trigger Property="IsSelected" Value="True">
+                        <Setter Property="Background" Value="{StaticResource DG_BG_RowHover}" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <!-- DataGridCell style -->
+            <Style x:Key="MyDG_ColumnStyle" TargetType="{x:Type DataGridCell}">
+                <!--<Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type DataGridCell}">
+                            <Grid Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center" Margin="10,0,0,0" />
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>-->
+                <Style.Triggers>
+                    <Trigger Property="IsSelected" Value="True">
+                        <Setter Property="Background" Value="{StaticResource DG_BG_RowSelected}" />
+                        <Setter Property="Foreground" Value="{StaticResource DG_FG_RowSelected}" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <Style x:Key="MyDG_CellStyleGreen" TargetType="{x:Type DataGridCell}" BasedOn="{StaticResource MyDG_ColumnStyle}">
+                <Setter Property="Background" Value="{StaticResource MatGreenBrush}"/>
+            </Style>
+            <Style x:Key="MyDG_CellStyleRed" TargetType="{x:Type DataGridCell}" BasedOn="{StaticResource MyDG_ColumnStyle}">
+                <Setter Property="Background" Value="{StaticResource MatRedBursh}"/>
+            </Style>
+
+
+            <!-- button style -->
+            <Style x:Key="MyBtnStyle" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                <Setter Property="Height" Value="30"/>
+                <Setter Property="Width" Value="50"/>
+                <Setter Property="Background" Value="{StaticResource PublicBtnBG_Color}"/>
+                <Setter Property="FontSize" Value="12"/>
+            </Style>
+
+
+            <!-- toooooooooooooooooooooooooooooooooooogle on off-->
+            <Style x:Key="CheckBoxStyle1" TargetType="{x:Type CheckBox}">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}"/>
+                <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type CheckBox}">
+                            <ControlTemplate.Resources>
+                                <Storyboard x:Key="OnChecking">
+                                    <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="slider" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+                                        <SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="25"/>
+                                    </DoubleAnimationUsingKeyFrames>
+                                </Storyboard>
+                                <Storyboard x:Key="OnUnchecking">
+                                    <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="slider" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+                                        <SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0"/>
+                                    </DoubleAnimationUsingKeyFrames>
+                                    <ThicknessAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="slider" Storyboard.TargetProperty="(FrameworkElement.Margin)">
+                                        <SplineThicknessKeyFrame KeyTime="00:00:00.3000000" Value="1,1,1,1"/>
+                                    </ThicknessAnimationUsingKeyFrames>
+                                </Storyboard>
+                            </ControlTemplate.Resources>
+
+                            <DockPanel x:Name="dockPanel">
+                                <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" ContentTemplate="{TemplateBinding ContentTemplate}" RecognizesAccessKey="True" VerticalAlignment="Center"/>
+                                <Grid Margin="5,5,0,5" Width="50" Background="#FFC0CCD9">
+                                    <TextBlock Text="ON" TextWrapping="Wrap" FontWeight="Bold" FontSize="12" HorizontalAlignment="Right" Margin="0,0,3,0"/>
+                                    <TextBlock HorizontalAlignment="Left" Margin="2,0,0,0" FontSize="12" FontWeight="Bold" Text="OFF" TextWrapping="Wrap"/>
+                                    <Border HorizontalAlignment="Left" x:Name="slider" Width="23" BorderThickness="1,1,1,1" CornerRadius="3,3,3,3" RenderTransformOrigin="0.5,0.5" Margin="1,1,1,1">
+                                        <Border.RenderTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                                <SkewTransform AngleX="0" AngleY="0"/>
+                                                <RotateTransform Angle="0"/>
+                                                <TranslateTransform X="0" Y="0"/>
+                                            </TransformGroup>
+                                        </Border.RenderTransform>
+                                        <Border.BorderBrush>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#FFFFFFFF" Offset="0"/>
+                                                <GradientStop Color="#FF4490FF" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Border.BorderBrush>
+                                        <Border.Background>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#FF8AB4FF" Offset="1"/>
+                                                <GradientStop Color="#FFD1E2FF" Offset="0"/>
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+                                    </Border>
+                                </Grid>
+                            </DockPanel>
+
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard Storyboard="{StaticResource OnUnchecking}" x:Name="OnUnchecking_BeginStoryboard"/>
+                                    </Trigger.ExitActions>
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard Storyboard="{StaticResource OnChecking}" x:Name="OnChecking_BeginStoryboard"/>
+                                    </Trigger.EnterActions>
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <!--////////////////////////Paging Stack Panel/////////////////////////-->             
+            <ControlTemplate x:Key="PagingStackPanel">
+                <StackPanel Width="Auto"  Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center">
+                    <Button Margin="4,0" Content="&lt;&lt;"  Command="{Binding FirstCommand}"/>
+                    <Button Margin="4,0" Content="&lt;" Command="{Binding PreviousCommand}"/>
+                    <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                        <TextBlock Text="{Binding  CurPage}"/>
+                        <TextBlock Text=" of "/>
+                        <TextBlock Text="{Binding  PageCount}"/>
+                    </StackPanel>
+                    <Button Margin="4,0" Content="&gt;" Command="{Binding NextCommand}"/>
+                    <Button Margin="4,0" Content="&gt;&gt;" Command="{Binding LastCommand}"/>
+                </StackPanel>
+            </ControlTemplate>
+            
+            <!--////////////////////////Head Stack Panel/////////////////////////-->
+            <ControlTemplate x:Key="SearchStackPanel">
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0">
+                        <ComboBox ItemsSource="{Binding PageSizeList}" 
+            			SelectedValue="{Binding PageSize, Mode=TwoWay}" 
+                        SelectedValuePath="Id"   DisplayMemberPath="Id" VerticalAlignment="Center" MinWidth="60" Height="26">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <i:InvokeCommandAction Command="{Binding RefreshCommand}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </ComboBox>
+                        <TextBlock x:Name="blkRecoreds" Text="records" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="5" Margin="1,0,0,0" FontSize="10.667"/>
+                    </StackPanel>
+
+                    <TextBlock x:Name="blkFrom" Text="From" Margin="0,0,5,0" VerticalAlignment="Center" TextAlignment="Right" FontSize="10.667" Grid.Column="1" HorizontalAlignment="Center" />
+                    <DatePicker x:Name="txtStartDate" Text="{Binding StartDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  FontSize="13.333" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="26" Grid.Column="2"/>
+                    <TextBlock x:Name="blkTo" Text="To"  Margin="5,0" VerticalAlignment="Center" TextAlignment="Right" HorizontalAlignment="Center" FontSize="10.667" Grid.Column="3" />
+                    <DatePicker x:Name="txtEndDate" Text="{Binding EndDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  FontSize="13.333" Margin="0,0,20,0" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Left" Height="26"/>
+                    <TextBox x:Name="txtKW" Text="{Binding KW, TargetNullValue={x:Static sys:String.Empty}}" VerticalContentAlignment="Center" VerticalAlignment="Center" FontSize="13.333" Margin="0" Width="230" Height="26" Grid.Column="5"/>
+                    <Button x:Name="btnSearch" Content="search" Style="{StaticResource MyBtnStyle}" Command="{Binding RefreshCommand}" Width="60" Height="30" FontSize="10.667" VerticalAlignment="Center" Margin="0,0,0,2" Grid.Column="6" HorizontalAlignment="Center"/>
+                    <Button x:Name="btnClear" Content="Clear" Style="{StaticResource MyBtnStyle}" Command="{Binding RefreshCommand }" CommandParameter="c" Width="60" Height="30" Margin="0,0,0,2" FontSize="10.667" VerticalAlignment="Center" Grid.Column="7" HorizontalAlignment="Center"/>
+                    <CheckBox x:Name="chkStatus" Content="Active" IsChecked="{Binding Status, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Command="{Binding RefreshCommand}" Height="30" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="8" HorizontalAlignment="Left"/>
+                    <ComboBox x:Name="typesCB" ItemsSource="{Binding TypesList}" 
+            			SelectedValue="{Binding TypeId, Mode=TwoWay}" 
+                        SelectedValuePath="Id"   DisplayMemberPath="Name" VerticalAlignment="Center" MinWidth="60" Height="26" Margin="10,0" HorizontalAlignment="Center" Grid.Column="9">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding RefreshCommand}" CommandParameter="c"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ComboBox>
+                </Grid>
+            </ControlTemplate>
+
+
+            <ControlTemplate x:Key="CardCount">
+                <Grid Background="{StaticResource BlueBrush}" Width="200" Height="80" Margin="0,10" >
+                    <Grid.Resources>
+                        <Style TargetType="{x:Type Grid}">
+                            <Setter Property="TextElement.Foreground" Value="{StaticResource DarkWhiteBrush}"/>
+                        </Style>
+                    </Grid.Resources>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="10"/>
+                        <RowDefinition Height="20"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border Background="{StaticResource DarkBlueBrush}" Padding="5" Grid.RowSpan="4">
+                        <Image Source="{Binding DisplayImg}"/>
+                    </Border>
+                    <TextBlock x:Name="blkTotal" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Margin="10,0,0,0"/>
+                    <Viewbox  Margin="10,0,5,0"  Grid.Row="1" VerticalAlignment="Center" Grid.Column="1" HorizontalAlignment="Left">
+                        <TextBlock x:Name="txtCount" Text="{Binding Count}"  Foreground="{StaticResource DarkWhiteBrush}" FontSize="18.667"/>
+                    </Viewbox>
+                    <Separator Grid.Row="2" Height="4" Background="#FFF0E8E8" Grid.Column="1" Margin="0"/>
+                    <TextBlock x:Name="blkT" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Margin="10,0,5,0" Grid.Row="3"/>
+                </Grid>
+
+            </ControlTemplate>
+
+            <ControlTemplate x:Key="CardAmount">
+                <Grid Background="{StaticResource LightGreenBrush}" Width="200" Height="80" Margin="0,10">
+                    <Grid.Resources>
+                        <Style TargetType="{x:Type Grid}">
+                            <Setter Property="TextElement.Foreground" Value="{StaticResource DarkWhiteBrush}"/>
+                        </Style>
+                    </Grid.Resources>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="10"/>
+                        <RowDefinition Height="20"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock x:Name="blkTotal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                    <Viewbox  Margin="10,0,5,0"  Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left">
+                        <TextBlock Text="{Binding Amount, StringFormat=c}"  Foreground="{StaticResource DarkWhiteBrush}" FontSize="18.667"/>
+                    </Viewbox>
+                    <Separator Grid.Row="2" Height="4" Background="#FFF0E8E8" Margin="0"/>
+                    <TextBlock x:Name="blkT" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,5,0" Grid.Row="3"/>
+                </Grid>
+            </ControlTemplate>
+
+            <ControlTemplate x:Key="CardCredit">
+                <Grid Background="{StaticResource GoogleOrangeBrush}" Width="200" Height="80" Margin="0,10" >
+                    <Grid.Resources>
+                        <Style TargetType="{x:Type Grid}">
+                            <Setter Property="TextElement.Foreground" Value="{StaticResource DarkWhiteBrush}"/>
+                        </Style>
+                    </Grid.Resources>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="10"/>
+                        <RowDefinition Height="20"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock x:Name="blkTotal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                    <Viewbox  Margin="10,0,5,0"  Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left">
+                        <TextBlock Text="{Binding Credit, StringFormat=c}"  Foreground="{StaticResource DarkWhiteBrush}" FontSize="18.667"/>
+                    </Viewbox>
+                    <Separator Grid.Row="2" Height="4" Background="#FFF0E8E8" Margin="0"/>
+                    <TextBlock x:Name="blkT" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,5,0" Grid.Row="3"/>
+                </Grid>
+            </ControlTemplate>
+
+            <ControlTemplate x:Key="CardDebt">
+                <Grid Background="{StaticResource GoogleRedBrush}"  Width="200" Height="80" Margin="0,10" >
+                    <Grid.Resources>
+                        <Style TargetType="{x:Type Grid}">
+                            <Setter Property="TextElement.Foreground" Value="{StaticResource DarkWhiteBrush}"/>
+                        </Style>
+                    </Grid.Resources>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="10"/>
+                        <RowDefinition Height="20"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock x:Name="blkTotal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                    <Viewbox  Margin="10,0,5,0"  Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left">
+                        <TextBlock Text="{Binding Debt, StringFormat=c}"  Foreground="{StaticResource DarkWhiteBrush}" FontSize="18.667"/>
+                    </Viewbox>
+                    <Separator Grid.Row="2" Height="4" Background="#FFF0E8E8" Margin="0"/>
+                    <TextBlock x:Name="blkT" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,5,0" Grid.Row="3"/>
+                </Grid>
+            </ControlTemplate>
+
+
+            <ControlTemplate x:Key="CardAmountInt">
+                <Grid Background="{StaticResource LightGreenBrush}" Width="200" Height="80" Margin="0,10">
+                    <Grid.Resources>
+                        <Style TargetType="{x:Type Grid}">
+                            <Setter Property="TextElement.Foreground" Value="{StaticResource DarkWhiteBrush}"/>
+                        </Style>
+                    </Grid.Resources>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="10"/>
+                        <RowDefinition Height="20"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock x:Name="blkTotal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                    <Viewbox  Margin="10,0,5,0"  Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left">
+                        <TextBlock Text="{Binding Amount}"  Foreground="{StaticResource DarkWhiteBrush}" FontSize="18.667"/>
+                    </Viewbox>
+                    <Separator Grid.Row="2" Height="4" Background="#FFF0E8E8" Margin="0"/>
+                    <TextBlock x:Name="blkT" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,5,0" Grid.Row="3"/>
+                </Grid>
+            </ControlTemplate>
+
+            <ControlTemplate x:Key="CardName">
+                <Grid Background="{StaticResource BlueBrush}" Width="200" Height="80" Margin="0,10" HorizontalAlignment="Left" VerticalAlignment="Center" >
+                    <Grid.Resources>
+                        <Style TargetType="{x:Type Grid}">
+                            <Setter Property="TextElement.Foreground" Value="{StaticResource DarkWhiteBrush}"/>
+                        </Style>
+                    </Grid.Resources>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="10"/>
+                        <RowDefinition Height="20"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border Background="{StaticResource DarkBlueBrush}" Padding="5" Grid.RowSpan="4">
+                        <Image Source="{Binding DisplayImg}"/>
+                    </Border>
+                    <Viewbox  Margin="10,0,5,0"  Grid.Row="1" VerticalAlignment="Center" Grid.Column="1" HorizontalAlignment="Left">
+                        <TextBlock x:Name="txtName" Foreground="{StaticResource DarkWhiteBrush}" FontSize="18.667"/>
+                    </Viewbox>
+                    <Separator Grid.Row="2" Height="4" Background="#FFF0E8E8" Grid.Column="1" Margin="0"/>
+                    <TextBlock x:Name="blkT" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Margin="10,0,5,0" Grid.Row="3"/>
+                </Grid>
+
+            </ControlTemplate>
+            
+            <Image x:Key="XImg" Source="Assets/x.png"/>
+            <ImageBrush x:Key="XImgBrush" ImageSource="/Assets/x.png" Stretch="UniformToFill"/>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

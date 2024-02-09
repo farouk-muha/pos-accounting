@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="950c820528844a23806caa8038e7c936" Name="Diagram1">
+        <EntityTypeShape EntityType="CropAccountingAppModel.AccountEnd" Width="1.5" PointX="5.25" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CropAccountingAppModel.Account" Width="1.5" PointX="7.5" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CropAccountingAppModel.Bank" Width="1.5" PointX="5.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CropAccountingAppModel.Category" Width="1.5" PointX="3" PointY="32.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CropAccountingAppModel.City" Width="1.5" PointX="3" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CropAccountingAppModel.Client" Width="1.5" PointX="12.75" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CropAccountingAppModel.ClientType" Width="1.5" PointX="10.5" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CropAccountingAppModel.CorpBank" Width="1.5" PointX="8" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CropAccountingAppModel.CorpInfo" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CropAccountingAppModel.CorpType" Width="1.5" PointX="0.75" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CropAccountingAppModel.Country" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CropAccountingAppModel.CropStatu" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CropAccountingAppModel.Emp" Width="1.5" PointX="9.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CropAccountingAppModel.FiscalYear" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CropAccountingAppModel.Gender" Width="1.5" PointX="3" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CropAccountingAppModel.InvoiceLine" Width="1.5" PointX="12" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CropAccountingAppModel.Invoice" Width="1.5" PointX="9.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CropAccountingAppModel.InvoiceType" Width="1.5" PointX="7.5" PointY="25.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CropAccountingAppModel.JournalDet" Width="1.5" PointX="15.75" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CropAccountingAppModel.Journal" Width="1.5" PointX="10.5" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CropAccountingAppModel.JournalType" Width="1.5" PointX="8.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CropAccountingAppModel.Product" Width="1.5" PointX="5.25" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CropAccountingAppModel.ProductUnit" Width="1.5" PointX="7.5" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CropAccountingAppModel.ReceiptInvoice" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CropAccountingAppModel.Receipt" Width="1.5" PointX="12.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CropAccountingAppModel.ReceiptType" Width="1.5" PointX="10.5" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CropAccountingAppModel.SecActionType" Width="1.5" PointX="11" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CropAccountingAppModel.SecLocalRole" Width="1.5" PointX="3" PointY="23.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CropAccountingAppModel.SecLocalRoleTask" Width="1.5" PointX="5.25" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CropAccountingAppModel.SecMasterTask" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CropAccountingAppModel.SecRole" Width="1.5" PointX="3" PointY="27" IsExpanded="true" />
+        <EntityTypeShape EntityType="CropAccountingAppModel.SecRoleTask" Width="1.5" PointX="13.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CropAccountingAppModel.SecTask" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CropAccountingAppModel.SecUser" Width="1.5" PointX="5.25" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CropAccountingAppModel.Store" Width="1.5" PointX="7.5" PointY="28.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CropAccountingAppModel.Symbol" Width="1.5" PointX="0.75" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CropAccountingAppModel.sysdiagram" Width="1.5" PointX="13.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CropAccountingAppModel.UnitConversion" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CropAccountingAppModel.Unit" Width="1.5" PointX="3" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CropAccountingAppModel.UserStatus" Width="1.5" PointX="3" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CropAccountingAppModel.Visa" Width="1.5" PointX="10.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CropAccountingAppModel.SecUserTrack" Width="1.5" PointX="14.75" PointY="10.75" IsExpanded="true" />
+        <AssociationConnector Association="CropAccountingAppModel.FK_Accounts_EndAccounts" ManuallyRouted="false" />
+        <AssociationConnector Association="CropAccountingAppModel.FK_Accounts_Accounts" ManuallyRouted="false" />
+        <AssociationConnector Association="CropAccountingAppModel.FK_Accounts_CorpInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="CropAccountingAppModel.FK_Accounts_SecUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="CropAccountingAppModel.FK_Clients_Accounts" ManuallyRouted="false" />
+        <AssociationConnector Association="CropAccountingAppModel.FK_Emps_Accounts" ManuallyRouted="false" />
+        <AssociationConnector Association="CropAccountingAppModel.FK_Invoices_Accounts" ManuallyRouted="false" />
+        <AssociationConnector Association="CropAccountingAppModel.FK_JournalDets_Accounts" ManuallyRouted="false" />
+        <AssociationConnector Association="CropAccountingAppModel.FK_Receipts_Accounts" ManuallyRouted="false" />
+        <AssociationConnector Association="CropAccountingAppModel.FK_CorpBanks_Banks" ManuallyRouted="false" />
+        <AssociationConnector Association="CropAccountingAppModel.FK_Categories_CorpTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="CropAccountingAppModel.FK_Products_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="CropAccountingAppModel.FK__Cities__SymbolId__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="CropAccountingAppModel.FK_SecUsers_Cities" ManuallyRouted="false" />
+        <AssociationConnector Association="CropAccountingAppModel.FK_Clients_Clients" ManuallyRouted="false" />
+        <AssociationConnector Association="CropAccountingAppModel.FK_Visas_CorpBanks" ManuallyRouted="false" />
+        <AssociationConnector Association="CropAccountingAppModel.FK_CorpInfo_CropStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="CropAccountingAppModel.FK_SecLocalGroups_CorpInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="CropAccountingAppModel.FK_SecUsers_CorpInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="CropAccountingAppModel.FK_Stores_CorpInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="CropAccountingAppModel.FK_Emps_SecUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="CropAccountingAppModel.FK_Genders_Symbols" ManuallyRouted="false" />
+        <AssociationConnector Association="CropAccountingAppModel.FK_SecUsers_Genders" ManuallyRouted="false" />
+        <AssociationConnector Association="CropAccountingAppModel.FK_InvoiceLines_Invoices" ManuallyRouted="false" />
+        <AssociationConnector Association="CropAccountingAppModel.FK_InvoiceLines_ProductUnits" ManuallyRouted="false" />
+        <AssociationConnector Association="CropAccountingAppModel.FK_Invoices_InvoiceTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="CropAccountingAppModel.FK_Invoices_Stores" ManuallyRouted="false" />
+        <AssociationConnector Association="CropAccountingAppModel.FK_JournalDets_Journals" ManuallyRouted="false" />
+        <AssociationConnector Association="CropAccountingAppModel.FK_Journals_JournalTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="CropAccountingAppModel.FK_Journals_SecUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="CropAccountingAppModel.FK_Products_Units" ManuallyRouted="false" />
+        <AssociationConnector Association="CropAccountingAppModel.FK_ProductUnits_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="CropAccountingAppModel.FK_ProductUnits_Units" ManuallyRouted="false" />
+        <AssociationConnector Association="CropAccountingAppModel.FK_Receipts_ReceiptTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="CropAccountingAppModel.FK_Receipts_SecUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="CropAccountingAppModel.FK_SecLocalRoleTasks_SecActionType" ManuallyRouted="false" />
+        <AssociationConnector Association="CropAccountingAppModel.FK_SecRoleTasks_SecActionType" ManuallyRouted="false" />
+        <AssociationConnector Association="CropAccountingAppModel.FK_SecLocalRoleTasks_SecLocalRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="CropAccountingAppModel.FK_SecUsers_SecLocalRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="CropAccountingAppModel.FK_SecLocalRoleTasks_SecTasks" ManuallyRouted="false" />
+        <AssociationConnector Association="CropAccountingAppModel.FK_SecTasks_SecMasterTasks" ManuallyRouted="false" />
+        <AssociationConnector Association="CropAccountingAppModel.FK_SecRoleTasks_SecRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="CropAccountingAppModel.FK_SecUsers_SecRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="CropAccountingAppModel.FK_SecRoleTasks_SecTasks" ManuallyRouted="false" />
+        <AssociationConnector Association="CropAccountingAppModel.FK_SecUsers_UserStatuses" ManuallyRouted="false" />
+        <AssociationConnector Association="CropAccountingAppModel.FK_SecUsers_UserStatuses1" ManuallyRouted="false" />
+        <AssociationConnector Association="CropAccountingAppModel.FK_UnitMaster_Symbols" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

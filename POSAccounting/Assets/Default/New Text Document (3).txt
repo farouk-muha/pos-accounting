@@ -1,0 +1,15 @@
+all      14 d     remote     usa      eg     ksa    du
+AI DATA  python +sql, xml, json, or java , r, php, c# 
+56,000   11,     1,4         3,    ` 137     72   170
+
+c# asp.net data desktop,  asp.net 5,
+22,693   4,884    502       715     174      59   140 
+
+php
+7,522    1,228    266      317      289     105   179 
+
+react , react js 5,
+52,251   14,120   807     1,322     95      55    153 
+  
+java
+49,121  10,448  1,217    2,122      200    107    294

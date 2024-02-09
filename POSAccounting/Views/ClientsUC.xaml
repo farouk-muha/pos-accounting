@@ -1,0 +1,79 @@
+﻿<UserControl x:Class="POSAccounting.Views.ClientsUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:POSAccounting.Views"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:p = "clr-namespace:POSAccounting.Properties"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="1000">
+    <UserControl.Resources>
+        <ContextMenu  x:Key="RowMenu" >
+            <MenuItem Header="{x:Static p:Resources.Refresh}" Command="{Binding Path=DataContext.RefreshCommand, RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}"/>
+            <MenuItem Header="{x:Static p:Resources.Add}" Command="{Binding Path=DataContext.AddCommand, RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}"/>
+            <MenuItem Header="{x:Static p:Resources.Edit}" Command="{Binding Path=DataContext.EditCommand, RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}" CommandParameter="{Binding Id}"/>
+            <MenuItem Header="{x:Static p:Resources.Delete}" Command="{Binding Path=DataContext.DeleteCommand, RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}" CommandParameter="{Binding Id}"/>
+        </ContextMenu>
+        <Style x:Key="MyDG_RowStyleWitnMenu" TargetType="DataGridRow" BasedOn="{StaticResource MyDG_RowStyle}">
+            <Setter Property="ContextMenu" Value="{StaticResource RowMenu}" />
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <ContentControl x:Name="cardCount" Template="{StaticResource CardCount}" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        <ContentControl x:Name="cardAmount" Template="{StaticResource CardAmount}" Margin="220,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        <ContentControl x:Name="cardCredit" Template="{StaticResource CardCredit}" Margin="460,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        <ContentControl x:Name="cardDebt" Template="{StaticResource CardDebt}" Margin="680,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" />
+
+        <ContentControl x:Name="headerControl" Template="{StaticResource SearchStackPanel}" Margin="0" Grid.Row="1" />
+
+        <DataGrid x:Name="dg" ItemsSource="{Binding Models}" RowStyle="{StaticResource MyDG_RowStyleWitnMenu}" CellStyle="{StaticResource MyDG_ColumnStyle}"   Style="{StaticResource MyDG}" ColumnHeaderStyle="{StaticResource MyHeaderStyle}" Grid.Row="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Num}"  Header="{x:Static p:Resources.Num}" Width="120">
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell" BasedOn="{StaticResource MyDG_ColumnStyle}">
+                            <EventSetter Event="MouseLeftButtonUp" Handler="NumMouseLeftBtnUpHandler"/>
+                            <EventSetter Event="MouseEnter" Handler="NumMouseEnter_OnHandler"/>
+                            <EventSetter Event="MouseLeave" Handler="NumMouseLeave_OnHandler"/>
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Name}"  Header="{x:Static p:Resources.Name}" Width="*"/>
+                <DataGridTextColumn Binding="{Binding InvoiceCount}" Header="{x:Static p:Resources.Invoices}" Width="100">
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell" BasedOn="{StaticResource MyDG_ColumnStyle}">
+                            <EventSetter Event="MouseLeftButtonUp" Handler="InvMouseLeftBtnUpHandler"/>
+                            <EventSetter Event="MouseEnter" Handler="NumMouseEnter_OnHandler"/>
+                            <EventSetter Event="MouseLeave" Handler="NumMouseLeave_OnHandler"/>
+                            <Setter Property="Foreground" Value="{StaticResource DarkBlueBrush}"/>
+
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding ReceiptCount}" Header="{x:Static p:Resources.Receipts}" Width="100">
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell" BasedOn="{StaticResource MyDG_ColumnStyle}">
+                            <EventSetter Event="MouseLeftButtonUp" Handler="RecMouseLeftBtnUpHandler"/>
+                            <EventSetter Event="MouseEnter" Handler="NumMouseEnter_OnHandler"/>
+                            <EventSetter Event="MouseLeave" Handler="NumMouseLeave_OnHandler"/>
+                            <Setter Property="Foreground" Value="{StaticResource DarkBlueBrush}"/>
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Debt}" Header="{x:Static p:Resources.Debt}" Width="120"/>
+                <DataGridTextColumn Binding="{Binding Credit}" Header="{x:Static p:Resources.Credit}" Width="120"/>
+                <DataGridTextColumn Binding="{Binding Ballance}" Header="{x:Static p:Resources.Balance}" Width="120"/>
+                <DataGridTextColumn Binding="{Binding Phone}" Header="{x:Static p:Resources.Phone}" Width="150"/>
+                <DataGridTextColumn Binding="{Binding Address}" Header="{x:Static p:Resources.Address}" Width="150"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <ContentControl Template="{StaticResource PagingStackPanel}" Grid.Row="3" HorizontalAlignment="Center" />
+    </Grid>
+</UserControl>

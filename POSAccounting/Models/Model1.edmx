@@ -1,0 +1,3128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CropAccountingAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AccountEnds">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Accounts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Num" Type="int" Nullable="false" />
+          <Property Name="EnName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ArName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Deleteable" Type="bit" Nullable="false" />
+          <Property Name="AccountEndId" Type="int" />
+          <Property Name="AccountParentId" Type="uniqueidentifier" />
+          <Property Name="CropId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Banks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Num" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="CorpTypeId" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cities">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CityName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CountryId" Type="tinyint" Nullable="false" />
+          <Property Name="SymbolId" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Num" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="255" />
+          <Property Name="Img" Type="varchar" MaxLength="2083" />
+          <Property Name="LocalImg" Type="varchar" MaxLength="2083" />
+          <Property Name="ClinetTypeId" Type="tinyint" Nullable="false" />
+          <Property Name="IsCompany" Type="bit" Nullable="false" />
+          <Property Name="StatusN" Type="bit" Nullable="false" />
+          <Property Name="AccountId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LocalImage" Type="varchar" MaxLength="2083" />
+        </EntityType>
+        <EntityType Name="ClientTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="tinyint" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CorpBanks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Num" Type="int" Nullable="false" />
+          <Property Name="BankId" Type="smallint" Nullable="false" />
+          <Property Name="CorpId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CorpInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+          <Property Name="Phone" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="255" />
+          <Property Name="Owner" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="320" />
+          <Property Name="Logo" Type="varchar" MaxLength="2083" />
+          <Property Name="StatusId" Type="tinyint" Nullable="false" />
+          <Property Name="RegisterDate" Type="date" />
+          <Property Name="RenewDate" Type="date" />
+          <Property Name="CorpTypeId" Type="tinyint" Nullable="false" />
+          <Property Name="LocalImg" Type="varchar" MaxLength="2083" />
+        </EntityType>
+        <EntityType Name="CorpTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="tinyint" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Countries">
+          <Key>
+            <PropertyRef Name="CountryId" />
+          </Key>
+          <Property Name="CountryId" Type="tinyint" Nullable="false" />
+          <Property Name="CityName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="SymbolId" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CropStatus">
+          <Key>
+            <PropertyRef Name="CropStatusId" />
+          </Key>
+          <Property Name="CropStatusId" Type="tinyint" Nullable="false" />
+          <Property Name="CropStatusName" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Emps">
+          <Key>
+            <PropertyRef Name="EmpId" />
+          </Key>
+          <Property Name="EmpId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="EmpName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="EmpPhone" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="EmpAddress" Type="varchar" MaxLength="255" />
+          <Property Name="EmpImage" Type="varchar" MaxLength="2083" />
+          <Property Name="EmpSal" Type="decimal" Precision="14" Scale="2" />
+          <Property Name="EmpHireDate" Type="date" />
+          <Property Name="EmpComm" Type="varchar" MaxLength="255" />
+          <Property Name="StatusN" Type="bit" Nullable="false" />
+          <Property Name="AccountId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+        </EntityType>
+        <EntityType Name="FiscalYears">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Year" Type="date" Nullable="false" />
+          <Property Name="StartDate" Type="date" Nullable="false" />
+          <Property Name="EndDate" Type="date" Nullable="false" />
+          <Property Name="IsClosed" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Genders">
+          <Key>
+            <PropertyRef Name="GenderId" />
+          </Key>
+          <Property Name="GenderId" Type="tinyint" Nullable="false" />
+          <Property Name="GenderName" Type="varchar" MaxLength="255" />
+          <Property Name="SymbolId" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InvoiceLines">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="QTY" Type="int" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="14" Scale="2" Nullable="false" />
+          <Property Name="Notes" Type="varchar" MaxLength="255" />
+          <Property Name="InvoiceId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ProductUnitId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Invoices">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Num" Type="int" Nullable="false" />
+          <Property Name="Date" Type="smalldatetime" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="14" Scale="2" Nullable="false" />
+          <Property Name="Descount" Type="decimal" Precision="14" Scale="2" />
+          <Property Name="IsPayed" Type="bit" Nullable="false" />
+          <Property Name="Note" Type="varchar" MaxLength="255" />
+          <Property Name="InvoiceTypeId" Type="tinyint" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="StoreId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ClientName" Type="varchar" MaxLength="255" />
+          <Property Name="ClientPhone" Type="varchar" MaxLength="15" />
+          <Property Name="AccountId" Type="uniqueidentifier" />
+          <Property Name="Payed" Type="decimal" Precision="14" Scale="2" />
+          <Property Name="IsCash" Type="bit" Nullable="false" />
+          <Property Name="IsRemind" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InvoiceTypes">
+          <Key>
+            <PropertyRef Name="InvoiceTypeId" />
+          </Key>
+          <Property Name="InvoiceTypeId" Type="tinyint" Nullable="false" />
+          <Property Name="InvoiceTypeEnName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="InvoiceTypeArName" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JournalDets">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Credit" Type="decimal" Precision="14" Scale="2" Nullable="false" />
+          <Property Name="Debt" Type="decimal" Precision="14" Scale="2" Nullable="false" />
+          <Property Name="Note" Type="varchar" MaxLength="200" />
+          <Property Name="JournalId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AccountID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Num" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Journals">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Num" Type="int" Nullable="false" />
+          <Property Name="Date" Type="smalldatetime" Nullable="false" />
+          <Property Name="Note" Type="varchar" MaxLength="255" />
+          <Property Name="JournalTypeId" Type="tinyint" Nullable="false" />
+          <Property Name="RefId" Type="uniqueidentifier" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="Details" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="JournalTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="tinyint" Nullable="false" />
+          <Property Name="EnName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ArName" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="varchar(max)" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="QTY" Type="float" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="Img" Type="varchar" MaxLength="2083" />
+          <Property Name="Note" Type="varchar" MaxLength="255" />
+          <Property Name="CorpId" Type="int" Nullable="false" />
+          <Property Name="CategoryId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DefaultUnitId" Type="tinyint" Nullable="false" />
+          <Property Name="LocalImg" Type="varchar" MaxLength="2083" />
+        </EntityType>
+        <EntityType Name="ProductUnits">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ProductSKU" Type="varchar(max)" Nullable="false" />
+          <Property Name="PriceBuy" Type="decimal" Precision="14" Scale="2" Nullable="false" />
+          <Property Name="PriceSale" Type="decimal" Precision="14" Scale="2" Nullable="false" />
+          <Property Name="ProductId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UnitId" Type="tinyint" Nullable="false" />
+          <Property Name="Multiplier" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ReceiptInvoices">
+          <Key>
+            <PropertyRef Name="ReceiptId" />
+            <PropertyRef Name="InvoiceId" />
+          </Key>
+          <Property Name="ReceiptId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="InvoiceId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="dumb" Type="bit" />
+        </EntityType>
+        <EntityType Name="Receipts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Num" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="14" Scale="2" Nullable="false" />
+          <Property Name="Date" Type="smalldatetime" Nullable="false" />
+          <Property Name="Note" Type="varchar" MaxLength="255" />
+          <Property Name="ReceiptTypeId" Type="tinyint" Nullable="false" />
+          <Property Name="AccountId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IsCash" Type="bit" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ReceiptTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="tinyint" Nullable="false" />
+          <Property Name="EnName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ArName" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SecActionType">
+          <Key>
+            <PropertyRef Name="ActionId" />
+          </Key>
+          <Property Name="ActionId" Type="tinyint" Nullable="false" />
+          <Property Name="ArName" Type="nvarchar" MaxLength="50" />
+          <Property Name="EnName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SecLocalRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Notes" Type="varchar" MaxLength="255" />
+          <Property Name="CorpId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SecLocalRoleTasks">
+          <Key>
+            <PropertyRef Name="LocalRoleId" />
+            <PropertyRef Name="TaskId" />
+            <PropertyRef Name="ActionId" />
+          </Key>
+          <Property Name="LocalRoleId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TaskId" Type="smallint" Nullable="false" />
+          <Property Name="ActionId" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SecMasterTasks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="tinyint" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="5255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SecRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="tinyint" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Notes" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="SecRoleTasks">
+          <Key>
+            <PropertyRef Name="RoleId" />
+            <PropertyRef Name="TaskId" />
+            <PropertyRef Name="ActionId" />
+          </Key>
+          <Property Name="RoleId" Type="tinyint" Nullable="false" />
+          <Property Name="TaskId" Type="smallint" Nullable="false" />
+          <Property Name="ActionId" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SecTasks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ArName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="EnName" Type="varchar" MaxLength="200" />
+          <Property Name="TOrder" Type="smallint" />
+          <Property Name="TableName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="cSelect" Type="bit" />
+          <Property Name="cInsert" Type="bit" />
+          <Property Name="cUpdate" Type="bit" />
+          <Property Name="cDelete" Type="bit" />
+          <Property Name="cPrint" Type="bit" />
+          <Property Name="MasterTaskId" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="SecUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="320" Nullable="false" />
+          <Property Name="Password" Type="varbinary" MaxLength="255" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="FristName" Type="varchar" MaxLength="255" />
+          <Property Name="LastName" Type="varchar" MaxLength="255" />
+          <Property Name="Phone" Type="varchar" MaxLength="15" />
+          <Property Name="Birthday" Type="date" />
+          <Property Name="Address" Type="varchar" MaxLength="255" />
+          <Property Name="RegisterDate" Type="smalldatetime" Nullable="false" />
+          <Property Name="UserImg" Type="varchar" MaxLength="2083" />
+          <Property Name="CityId" Type="smallint" />
+          <Property Name="GenderId" Type="tinyint" />
+          <Property Name="StatusId" Type="tinyint" Nullable="false" />
+          <Property Name="LocalStatusId" Type="tinyint" Nullable="false" />
+          <Property Name="RoleId" Type="tinyint" Nullable="false" />
+          <Property Name="LocalRoleId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CorpId" Type="int" />
+          <Property Name="LocalImg" Type="varchar" MaxLength="2083" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CropAccountingApp.dbo.SecUserTrack' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SecUserTrack">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="TaskId" />
+            <PropertyRef Name="ActionId" />
+          </Key>
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TaskId" Type="smallint" Nullable="false" />
+          <Property Name="ActionId" Type="tinyint" Nullable="false" />
+          <Property Name="TrackDate" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Stores">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Num" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="CropId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Symbols">
+          <Key>
+            <PropertyRef Name="SymbolId" />
+          </Key>
+          <Property Name="SymbolId" Type="tinyint" Nullable="false" />
+          <Property Name="SymbolName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TableName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CSelect" Type="bit" Nullable="false" />
+          <Property Name="CUpdate" Type="bit" Nullable="false" />
+          <Property Name="CInsert" Type="bit" Nullable="false" />
+          <Property Name="Cdelete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="UnitConversions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ProductId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="BaseUnitId" Type="tinyint" Nullable="false" />
+          <Property Name="Multiplier" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Units">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="tinyint" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="SymbolId" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserStatuses">
+          <Key>
+            <PropertyRef Name="UserStatusId" />
+          </Key>
+          <Property Name="UserStatusId" Type="tinyint" Nullable="false" />
+          <Property Name="UserStatusName" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Visas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Num" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="CorpBankId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Cities__SymbolId__5165187F">
+          <End Role="Symbols" Type="Self.Symbols" Multiplicity="1" />
+          <End Role="Cities" Type="Self.Cities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Symbols">
+              <PropertyRef Name="SymbolId" />
+            </Principal>
+            <Dependent Role="Cities">
+              <PropertyRef Name="SymbolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accounts_Accounts">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="0..1" />
+          <End Role="Accounts1" Type="Self.Accounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Accounts1">
+              <PropertyRef Name="AccountParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accounts_CorpInfo">
+          <End Role="CorpInfo" Type="Self.CorpInfo" Multiplicity="1" />
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CorpInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Accounts">
+              <PropertyRef Name="CropId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accounts_EndAccounts">
+          <End Role="AccountEnds" Type="Self.AccountEnds" Multiplicity="0..1" />
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountEnds">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Accounts">
+              <PropertyRef Name="AccountEndId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accounts_SecUsers">
+          <End Role="SecUsers" Type="Self.SecUsers" Multiplicity="1" />
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SecUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Accounts">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Categories_CorpTypes">
+          <End Role="CorpTypes" Type="Self.CorpTypes" Multiplicity="1" />
+          <End Role="Categories" Type="Self.Categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CorpTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Categories">
+              <PropertyRef Name="CorpTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clients_Accounts">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
+          <End Role="Clients" Type="Self.Clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Clients">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clients_Clients">
+          <End Role="ClientTypes" Type="Self.ClientTypes" Multiplicity="1" />
+          <End Role="Clients" Type="Self.Clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Clients">
+              <PropertyRef Name="ClinetTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CorpBanks_Banks">
+          <End Role="Banks" Type="Self.Banks" Multiplicity="1" />
+          <End Role="CorpBanks" Type="Self.CorpBanks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Banks">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CorpBanks">
+              <PropertyRef Name="BankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CorpInfo_CropStatus">
+          <End Role="CropStatus" Type="Self.CropStatus" Multiplicity="1" />
+          <End Role="CorpInfo" Type="Self.CorpInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CropStatus">
+              <PropertyRef Name="CropStatusId" />
+            </Principal>
+            <Dependent Role="CorpInfo">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Emps_Accounts">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
+          <End Role="Emps" Type="Self.Emps" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Emps">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Emps_SecUsers">
+          <End Role="SecUsers" Type="Self.SecUsers" Multiplicity="0..1" />
+          <End Role="Emps" Type="Self.Emps" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SecUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Emps">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Genders_Symbols">
+          <End Role="Symbols" Type="Self.Symbols" Multiplicity="1" />
+          <End Role="Genders" Type="Self.Genders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Symbols">
+              <PropertyRef Name="SymbolId" />
+            </Principal>
+            <Dependent Role="Genders">
+              <PropertyRef Name="SymbolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InvoiceLines_Invoices">
+          <End Role="Invoices" Type="Self.Invoices" Multiplicity="1" />
+          <End Role="InvoiceLines" Type="Self.InvoiceLines" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Invoices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InvoiceLines">
+              <PropertyRef Name="InvoiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InvoiceLines_ProductUnits">
+          <End Role="ProductUnits" Type="Self.ProductUnits" Multiplicity="1" />
+          <End Role="InvoiceLines" Type="Self.InvoiceLines" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductUnits">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InvoiceLines">
+              <PropertyRef Name="ProductUnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoices_Accounts">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="0..1" />
+          <End Role="Invoices" Type="Self.Invoices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Invoices">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoices_InvoiceTypes">
+          <End Role="InvoiceTypes" Type="Self.InvoiceTypes" Multiplicity="1" />
+          <End Role="Invoices" Type="Self.Invoices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InvoiceTypes">
+              <PropertyRef Name="InvoiceTypeId" />
+            </Principal>
+            <Dependent Role="Invoices">
+              <PropertyRef Name="InvoiceTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoices_Stores">
+          <End Role="Stores" Type="Self.Stores" Multiplicity="1" />
+          <End Role="Invoices" Type="Self.Invoices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stores">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Invoices">
+              <PropertyRef Name="StoreId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JournalDets_Accounts">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
+          <End Role="JournalDets" Type="Self.JournalDets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="JournalDets">
+              <PropertyRef Name="AccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JournalDets_Journals">
+          <End Role="Journals" Type="Self.Journals" Multiplicity="1" />
+          <End Role="JournalDets" Type="Self.JournalDets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Journals">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="JournalDets">
+              <PropertyRef Name="JournalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Journals_JournalTypes">
+          <End Role="JournalTypes" Type="Self.JournalTypes" Multiplicity="1" />
+          <End Role="Journals" Type="Self.Journals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JournalTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Journals">
+              <PropertyRef Name="JournalTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Journals_SecUsers">
+          <End Role="SecUsers" Type="Self.SecUsers" Multiplicity="0..1" />
+          <End Role="Journals" Type="Self.Journals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SecUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Journals">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Categories">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Units">
+          <End Role="Units" Type="Self.Units" Multiplicity="1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Units">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="DefaultUnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductUnits_Products">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="ProductUnits" Type="Self.ProductUnits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductUnits">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductUnits_Units">
+          <End Role="Units" Type="Self.Units" Multiplicity="1" />
+          <End Role="ProductUnits" Type="Self.ProductUnits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Units">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductUnits">
+              <PropertyRef Name="UnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Receipts_Accounts">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
+          <End Role="Receipts" Type="Self.Receipts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Receipts">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Receipts_ReceiptTypes">
+          <End Role="ReceiptTypes" Type="Self.ReceiptTypes" Multiplicity="1" />
+          <End Role="Receipts" Type="Self.Receipts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReceiptTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Receipts">
+              <PropertyRef Name="ReceiptTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Receipts_SecUsers">
+          <End Role="SecUsers" Type="Self.SecUsers" Multiplicity="1" />
+          <End Role="Receipts" Type="Self.Receipts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SecUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Receipts">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SecLocalGroups_CorpInfo">
+          <End Role="CorpInfo" Type="Self.CorpInfo" Multiplicity="1" />
+          <End Role="SecLocalRoles" Type="Self.SecLocalRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CorpInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SecLocalRoles">
+              <PropertyRef Name="CorpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SecLocalRoleTasks_SecActionType">
+          <End Role="SecActionType" Type="Self.SecActionType" Multiplicity="1" />
+          <End Role="SecLocalRoleTasks" Type="Self.SecLocalRoleTasks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SecActionType">
+              <PropertyRef Name="ActionId" />
+            </Principal>
+            <Dependent Role="SecLocalRoleTasks">
+              <PropertyRef Name="ActionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SecLocalRoleTasks_SecLocalRoles">
+          <End Role="SecLocalRoles" Type="Self.SecLocalRoles" Multiplicity="1" />
+          <End Role="SecLocalRoleTasks" Type="Self.SecLocalRoleTasks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SecLocalRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SecLocalRoleTasks">
+              <PropertyRef Name="LocalRoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SecLocalRoleTasks_SecTasks">
+          <End Role="SecTasks" Type="Self.SecTasks" Multiplicity="1" />
+          <End Role="SecLocalRoleTasks" Type="Self.SecLocalRoleTasks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SecTasks">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SecLocalRoleTasks">
+              <PropertyRef Name="TaskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SecRoleTasks_SecActionType">
+          <End Role="SecActionType" Type="Self.SecActionType" Multiplicity="1" />
+          <End Role="SecRoleTasks" Type="Self.SecRoleTasks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SecActionType">
+              <PropertyRef Name="ActionId" />
+            </Principal>
+            <Dependent Role="SecRoleTasks">
+              <PropertyRef Name="ActionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SecRoleTasks_SecRoles">
+          <End Role="SecRoles" Type="Self.SecRoles" Multiplicity="1" />
+          <End Role="SecRoleTasks" Type="Self.SecRoleTasks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SecRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SecRoleTasks">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SecRoleTasks_SecTasks">
+          <End Role="SecTasks" Type="Self.SecTasks" Multiplicity="1" />
+          <End Role="SecRoleTasks" Type="Self.SecRoleTasks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SecTasks">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SecRoleTasks">
+              <PropertyRef Name="TaskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SecTasks_SecMasterTasks">
+          <End Role="SecMasterTasks" Type="Self.SecMasterTasks" Multiplicity="0..1" />
+          <End Role="SecTasks" Type="Self.SecTasks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SecMasterTasks">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SecTasks">
+              <PropertyRef Name="MasterTaskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SecUsers_Cities">
+          <End Role="Cities" Type="Self.Cities" Multiplicity="0..1" />
+          <End Role="SecUsers" Type="Self.SecUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="SecUsers">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SecUsers_CorpInfo">
+          <End Role="CorpInfo" Type="Self.CorpInfo" Multiplicity="0..1" />
+          <End Role="SecUsers" Type="Self.SecUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CorpInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SecUsers">
+              <PropertyRef Name="CorpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SecUsers_Genders">
+          <End Role="Genders" Type="Self.Genders" Multiplicity="0..1" />
+          <End Role="SecUsers" Type="Self.SecUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genders">
+              <PropertyRef Name="GenderId" />
+            </Principal>
+            <Dependent Role="SecUsers">
+              <PropertyRef Name="GenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SecUsers_SecLocalRoles">
+          <End Role="SecLocalRoles" Type="Self.SecLocalRoles" Multiplicity="1" />
+          <End Role="SecUsers" Type="Self.SecUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SecLocalRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SecUsers">
+              <PropertyRef Name="LocalRoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SecUsers_SecRoles">
+          <End Role="SecRoles" Type="Self.SecRoles" Multiplicity="1" />
+          <End Role="SecUsers" Type="Self.SecUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SecRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SecUsers">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SecUsers_UserStatuses">
+          <End Role="UserStatuses" Type="Self.UserStatuses" Multiplicity="1" />
+          <End Role="SecUsers" Type="Self.SecUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserStatuses">
+              <PropertyRef Name="UserStatusId" />
+            </Principal>
+            <Dependent Role="SecUsers">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SecUsers_UserStatuses1">
+          <End Role="UserStatuses" Type="Self.UserStatuses" Multiplicity="1" />
+          <End Role="SecUsers" Type="Self.SecUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserStatuses">
+              <PropertyRef Name="UserStatusId" />
+            </Principal>
+            <Dependent Role="SecUsers">
+              <PropertyRef Name="LocalStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stores_CorpInfo">
+          <End Role="CorpInfo" Type="Self.CorpInfo" Multiplicity="1" />
+          <End Role="Stores" Type="Self.Stores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CorpInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Stores">
+              <PropertyRef Name="CropId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UnitMaster_Symbols">
+          <End Role="Symbols" Type="Self.Symbols" Multiplicity="1" />
+          <End Role="Units" Type="Self.Units" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Symbols">
+              <PropertyRef Name="SymbolId" />
+            </Principal>
+            <Dependent Role="Units">
+              <PropertyRef Name="SymbolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Visas_CorpBanks">
+          <End Role="CorpBanks" Type="Self.CorpBanks" Multiplicity="1" />
+          <End Role="Visas" Type="Self.Visas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CorpBanks">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Visas">
+              <PropertyRef Name="CorpBankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CropAccountingAppModelStoreContainer">
+          <EntitySet Name="AccountEnds" EntityType="Self.AccountEnds" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Accounts" EntityType="Self.Accounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Banks" EntityType="Self.Banks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cities" EntityType="Self.Cities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientTypes" EntityType="Self.ClientTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CorpBanks" EntityType="Self.CorpBanks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CorpInfo" EntityType="Self.CorpInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CorpTypes" EntityType="Self.CorpTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CropStatus" EntityType="Self.CropStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Emps" EntityType="Self.Emps" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FiscalYears" EntityType="Self.FiscalYears" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Genders" EntityType="Self.Genders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InvoiceLines" EntityType="Self.InvoiceLines" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Invoices" EntityType="Self.Invoices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InvoiceTypes" EntityType="Self.InvoiceTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JournalDets" EntityType="Self.JournalDets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Journals" EntityType="Self.Journals" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JournalTypes" EntityType="Self.JournalTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductUnits" EntityType="Self.ProductUnits" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReceiptInvoices" EntityType="Self.ReceiptInvoices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Receipts" EntityType="Self.Receipts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReceiptTypes" EntityType="Self.ReceiptTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SecActionType" EntityType="Self.SecActionType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SecLocalRoles" EntityType="Self.SecLocalRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SecLocalRoleTasks" EntityType="Self.SecLocalRoleTasks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SecMasterTasks" EntityType="Self.SecMasterTasks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SecRoles" EntityType="Self.SecRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SecRoleTasks" EntityType="Self.SecRoleTasks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SecTasks" EntityType="Self.SecTasks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SecUsers" EntityType="Self.SecUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stores" EntityType="Self.Stores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Symbols" EntityType="Self.Symbols" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UnitConversions" EntityType="Self.UnitConversions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Units" EntityType="Self.Units" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserStatuses" EntityType="Self.UserStatuses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Visas" EntityType="Self.Visas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SecUserTrack" EntityType="Self.SecUserTrack" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SecUserTrack].[UserId] AS [UserId], 
+    [SecUserTrack].[TaskId] AS [TaskId], 
+    [SecUserTrack].[ActionId] AS [ActionId], 
+    [SecUserTrack].[TrackDate] AS [TrackDate]
+    FROM [dbo].[SecUserTrack] AS [SecUserTrack]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Cities__SymbolId__5165187F" Association="Self.FK__Cities__SymbolId__5165187F">
+            <End Role="Symbols" EntitySet="Symbols" />
+            <End Role="Cities" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accounts_Accounts" Association="Self.FK_Accounts_Accounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Accounts1" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accounts_CorpInfo" Association="Self.FK_Accounts_CorpInfo">
+            <End Role="CorpInfo" EntitySet="CorpInfo" />
+            <End Role="Accounts" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accounts_EndAccounts" Association="Self.FK_Accounts_EndAccounts">
+            <End Role="AccountEnds" EntitySet="AccountEnds" />
+            <End Role="Accounts" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accounts_SecUsers" Association="Self.FK_Accounts_SecUsers">
+            <End Role="SecUsers" EntitySet="SecUsers" />
+            <End Role="Accounts" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Categories_CorpTypes" Association="Self.FK_Categories_CorpTypes">
+            <End Role="CorpTypes" EntitySet="CorpTypes" />
+            <End Role="Categories" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clients_Accounts" Association="Self.FK_Clients_Accounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Clients" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clients_Clients" Association="Self.FK_Clients_Clients">
+            <End Role="ClientTypes" EntitySet="ClientTypes" />
+            <End Role="Clients" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CorpBanks_Banks" Association="Self.FK_CorpBanks_Banks">
+            <End Role="Banks" EntitySet="Banks" />
+            <End Role="CorpBanks" EntitySet="CorpBanks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CorpInfo_CropStatus" Association="Self.FK_CorpInfo_CropStatus">
+            <End Role="CropStatus" EntitySet="CropStatus" />
+            <End Role="CorpInfo" EntitySet="CorpInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Emps_Accounts" Association="Self.FK_Emps_Accounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Emps" EntitySet="Emps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Emps_SecUsers" Association="Self.FK_Emps_SecUsers">
+            <End Role="SecUsers" EntitySet="SecUsers" />
+            <End Role="Emps" EntitySet="Emps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Genders_Symbols" Association="Self.FK_Genders_Symbols">
+            <End Role="Symbols" EntitySet="Symbols" />
+            <End Role="Genders" EntitySet="Genders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InvoiceLines_Invoices" Association="Self.FK_InvoiceLines_Invoices">
+            <End Role="Invoices" EntitySet="Invoices" />
+            <End Role="InvoiceLines" EntitySet="InvoiceLines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InvoiceLines_ProductUnits" Association="Self.FK_InvoiceLines_ProductUnits">
+            <End Role="ProductUnits" EntitySet="ProductUnits" />
+            <End Role="InvoiceLines" EntitySet="InvoiceLines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoices_Accounts" Association="Self.FK_Invoices_Accounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Invoices" EntitySet="Invoices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoices_InvoiceTypes" Association="Self.FK_Invoices_InvoiceTypes">
+            <End Role="InvoiceTypes" EntitySet="InvoiceTypes" />
+            <End Role="Invoices" EntitySet="Invoices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoices_Stores" Association="Self.FK_Invoices_Stores">
+            <End Role="Stores" EntitySet="Stores" />
+            <End Role="Invoices" EntitySet="Invoices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JournalDets_Accounts" Association="Self.FK_JournalDets_Accounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="JournalDets" EntitySet="JournalDets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JournalDets_Journals" Association="Self.FK_JournalDets_Journals">
+            <End Role="Journals" EntitySet="Journals" />
+            <End Role="JournalDets" EntitySet="JournalDets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Journals_JournalTypes" Association="Self.FK_Journals_JournalTypes">
+            <End Role="JournalTypes" EntitySet="JournalTypes" />
+            <End Role="Journals" EntitySet="Journals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Journals_SecUsers" Association="Self.FK_Journals_SecUsers">
+            <End Role="SecUsers" EntitySet="SecUsers" />
+            <End Role="Journals" EntitySet="Journals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Categories" Association="Self.FK_Products_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Units" Association="Self.FK_Products_Units">
+            <End Role="Units" EntitySet="Units" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductUnits_Products" Association="Self.FK_ProductUnits_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="ProductUnits" EntitySet="ProductUnits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductUnits_Units" Association="Self.FK_ProductUnits_Units">
+            <End Role="Units" EntitySet="Units" />
+            <End Role="ProductUnits" EntitySet="ProductUnits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Receipts_Accounts" Association="Self.FK_Receipts_Accounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Receipts" EntitySet="Receipts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Receipts_ReceiptTypes" Association="Self.FK_Receipts_ReceiptTypes">
+            <End Role="ReceiptTypes" EntitySet="ReceiptTypes" />
+            <End Role="Receipts" EntitySet="Receipts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Receipts_SecUsers" Association="Self.FK_Receipts_SecUsers">
+            <End Role="SecUsers" EntitySet="SecUsers" />
+            <End Role="Receipts" EntitySet="Receipts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SecLocalGroups_CorpInfo" Association="Self.FK_SecLocalGroups_CorpInfo">
+            <End Role="CorpInfo" EntitySet="CorpInfo" />
+            <End Role="SecLocalRoles" EntitySet="SecLocalRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SecLocalRoleTasks_SecActionType" Association="Self.FK_SecLocalRoleTasks_SecActionType">
+            <End Role="SecActionType" EntitySet="SecActionType" />
+            <End Role="SecLocalRoleTasks" EntitySet="SecLocalRoleTasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SecLocalRoleTasks_SecLocalRoles" Association="Self.FK_SecLocalRoleTasks_SecLocalRoles">
+            <End Role="SecLocalRoles" EntitySet="SecLocalRoles" />
+            <End Role="SecLocalRoleTasks" EntitySet="SecLocalRoleTasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SecLocalRoleTasks_SecTasks" Association="Self.FK_SecLocalRoleTasks_SecTasks">
+            <End Role="SecTasks" EntitySet="SecTasks" />
+            <End Role="SecLocalRoleTasks" EntitySet="SecLocalRoleTasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SecRoleTasks_SecActionType" Association="Self.FK_SecRoleTasks_SecActionType">
+            <End Role="SecActionType" EntitySet="SecActionType" />
+            <End Role="SecRoleTasks" EntitySet="SecRoleTasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SecRoleTasks_SecRoles" Association="Self.FK_SecRoleTasks_SecRoles">
+            <End Role="SecRoles" EntitySet="SecRoles" />
+            <End Role="SecRoleTasks" EntitySet="SecRoleTasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SecRoleTasks_SecTasks" Association="Self.FK_SecRoleTasks_SecTasks">
+            <End Role="SecTasks" EntitySet="SecTasks" />
+            <End Role="SecRoleTasks" EntitySet="SecRoleTasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SecTasks_SecMasterTasks" Association="Self.FK_SecTasks_SecMasterTasks">
+            <End Role="SecMasterTasks" EntitySet="SecMasterTasks" />
+            <End Role="SecTasks" EntitySet="SecTasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SecUsers_Cities" Association="Self.FK_SecUsers_Cities">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="SecUsers" EntitySet="SecUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SecUsers_CorpInfo" Association="Self.FK_SecUsers_CorpInfo">
+            <End Role="CorpInfo" EntitySet="CorpInfo" />
+            <End Role="SecUsers" EntitySet="SecUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SecUsers_Genders" Association="Self.FK_SecUsers_Genders">
+            <End Role="Genders" EntitySet="Genders" />
+            <End Role="SecUsers" EntitySet="SecUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SecUsers_SecLocalRoles" Association="Self.FK_SecUsers_SecLocalRoles">
+            <End Role="SecLocalRoles" EntitySet="SecLocalRoles" />
+            <End Role="SecUsers" EntitySet="SecUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SecUsers_SecRoles" Association="Self.FK_SecUsers_SecRoles">
+            <End Role="SecRoles" EntitySet="SecRoles" />
+            <End Role="SecUsers" EntitySet="SecUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SecUsers_UserStatuses" Association="Self.FK_SecUsers_UserStatuses">
+            <End Role="UserStatuses" EntitySet="UserStatuses" />
+            <End Role="SecUsers" EntitySet="SecUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SecUsers_UserStatuses1" Association="Self.FK_SecUsers_UserStatuses1">
+            <End Role="UserStatuses" EntitySet="UserStatuses" />
+            <End Role="SecUsers" EntitySet="SecUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stores_CorpInfo" Association="Self.FK_Stores_CorpInfo">
+            <End Role="CorpInfo" EntitySet="CorpInfo" />
+            <End Role="Stores" EntitySet="Stores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UnitMaster_Symbols" Association="Self.FK_UnitMaster_Symbols">
+            <End Role="Symbols" EntitySet="Symbols" />
+            <End Role="Units" EntitySet="Units" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Visas_CorpBanks" Association="Self.FK_Visas_CorpBanks">
+            <End Role="CorpBanks" EntitySet="CorpBanks" />
+            <End Role="Visas" EntitySet="Visas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CropAccountingAppModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AccountEnd">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Accounts" Relationship="Self.FK_Accounts_EndAccounts" FromRole="AccountEnds" ToRole="Accounts" />
+        </EntityType>
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Num" Type="Int32" Nullable="false" />
+          <Property Name="EnName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ArName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Deleteable" Type="Boolean" Nullable="false" />
+          <Property Name="AccountEndId" Type="Int32" />
+          <Property Name="AccountParentId" Type="Guid" />
+          <Property Name="CropId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AccountEnd" Relationship="Self.FK_Accounts_EndAccounts" FromRole="Accounts" ToRole="AccountEnds" />
+          <NavigationProperty Name="Accounts1" Relationship="Self.FK_Accounts_Accounts" FromRole="Accounts" ToRole="Accounts1" />
+          <NavigationProperty Name="Account1" Relationship="Self.FK_Accounts_Accounts" FromRole="Accounts1" ToRole="Accounts" />
+          <NavigationProperty Name="CorpInfo" Relationship="Self.FK_Accounts_CorpInfo" FromRole="Accounts" ToRole="CorpInfo" />
+          <NavigationProperty Name="SecUser" Relationship="Self.FK_Accounts_SecUsers" FromRole="Accounts" ToRole="SecUsers" />
+          <NavigationProperty Name="Clients" Relationship="Self.FK_Clients_Accounts" FromRole="Accounts" ToRole="Clients" />
+          <NavigationProperty Name="Emps" Relationship="Self.FK_Emps_Accounts" FromRole="Accounts" ToRole="Emps" />
+          <NavigationProperty Name="Invoices" Relationship="Self.FK_Invoices_Accounts" FromRole="Accounts" ToRole="Invoices" />
+          <NavigationProperty Name="JournalDets" Relationship="Self.FK_JournalDets_Accounts" FromRole="Accounts" ToRole="JournalDets" />
+          <NavigationProperty Name="Receipts" Relationship="Self.FK_Receipts_Accounts" FromRole="Accounts" ToRole="Receipts" />
+        </EntityType>
+        <EntityType Name="Bank">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CorpBanks" Relationship="Self.FK_CorpBanks_Banks" FromRole="Banks" ToRole="CorpBanks" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Num" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CorpTypeId" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="CorpType" Relationship="Self.FK_Categories_CorpTypes" FromRole="Categories" ToRole="CorpTypes" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Products_Categories" FromRole="Categories" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CountryId" Type="Byte" Nullable="false" />
+          <Property Name="SymbolId" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Symbol" Relationship="Self.FK__Cities__SymbolId__5165187F" FromRole="Cities" ToRole="Symbols" />
+          <NavigationProperty Name="SecUsers" Relationship="Self.FK_SecUsers_Cities" FromRole="Cities" ToRole="SecUsers" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Num" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Img" Type="String" MaxLength="2083" FixedLength="false" Unicode="false" />
+          <Property Name="LocalImg" Type="String" MaxLength="2083" FixedLength="false" Unicode="false" />
+          <Property Name="ClinetTypeId" Type="Byte" Nullable="false" />
+          <Property Name="IsCompany" Type="Boolean" Nullable="false" />
+          <Property Name="StatusN" Type="Boolean" Nullable="false" />
+          <Property Name="AccountId" Type="Guid" Nullable="false" />
+          <Property Name="LocalImage" Type="String" MaxLength="2083" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_Clients_Accounts" FromRole="Clients" ToRole="Accounts" />
+          <NavigationProperty Name="ClientType" Relationship="Self.FK_Clients_Clients" FromRole="Clients" ToRole="ClientTypes" />
+        </EntityType>
+        <EntityType Name="ClientType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Byte" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Clients" Relationship="Self.FK_Clients_Clients" FromRole="ClientTypes" ToRole="Clients" />
+        </EntityType>
+        <EntityType Name="CorpBank">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Num" Type="Int32" Nullable="false" />
+          <Property Name="BankId" Type="Int16" Nullable="false" />
+          <Property Name="CorpId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Bank" Relationship="Self.FK_CorpBanks_Banks" FromRole="CorpBanks" ToRole="Banks" />
+          <NavigationProperty Name="Visas" Relationship="Self.FK_Visas_CorpBanks" FromRole="CorpBanks" ToRole="Visas" />
+        </EntityType>
+        <EntityType Name="CorpInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Owner" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="320" FixedLength="false" Unicode="false" />
+          <Property Name="Logo" Type="String" MaxLength="2083" FixedLength="false" Unicode="false" />
+          <Property Name="StatusId" Type="Byte" Nullable="false" />
+          <Property Name="RegisterDate" Type="DateTime" Precision="0" />
+          <Property Name="RenewDate" Type="DateTime" Precision="0" />
+          <Property Name="CorpTypeId" Type="Byte" Nullable="false" />
+          <Property Name="LocalImg" Type="String" MaxLength="2083" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Accounts" Relationship="Self.FK_Accounts_CorpInfo" FromRole="CorpInfo" ToRole="Accounts" />
+          <NavigationProperty Name="CropStatu" Relationship="Self.FK_CorpInfo_CropStatus" FromRole="CorpInfo" ToRole="CropStatus" />
+          <NavigationProperty Name="SecLocalRoles" Relationship="Self.FK_SecLocalGroups_CorpInfo" FromRole="CorpInfo" ToRole="SecLocalRoles" />
+          <NavigationProperty Name="SecUsers" Relationship="Self.FK_SecUsers_CorpInfo" FromRole="CorpInfo" ToRole="SecUsers" />
+          <NavigationProperty Name="Stores" Relationship="Self.FK_Stores_CorpInfo" FromRole="CorpInfo" ToRole="Stores" />
+        </EntityType>
+        <EntityType Name="CorpType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Byte" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Categories" Relationship="Self.FK_Categories_CorpTypes" FromRole="CorpTypes" ToRole="Categories" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryId" />
+          </Key>
+          <Property Name="CountryId" Type="Byte" Nullable="false" />
+          <Property Name="CityName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SymbolId" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CropStatu">
+          <Key>
+            <PropertyRef Name="CropStatusId" />
+          </Key>
+          <Property Name="CropStatusId" Type="Byte" Nullable="false" />
+          <Property Name="CropStatusName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CorpInfoes" Relationship="Self.FK_CorpInfo_CropStatus" FromRole="CropStatus" ToRole="CorpInfo" />
+        </EntityType>
+        <EntityType Name="Emp">
+          <Key>
+            <PropertyRef Name="EmpId" />
+          </Key>
+          <Property Name="EmpId" Type="Guid" Nullable="false" />
+          <Property Name="EmpName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmpPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmpAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EmpImage" Type="String" MaxLength="2083" FixedLength="false" Unicode="false" />
+          <Property Name="EmpSal" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="EmpHireDate" Type="DateTime" Precision="0" />
+          <Property Name="EmpComm" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="StatusN" Type="Boolean" Nullable="false" />
+          <Property Name="AccountId" Type="Guid" Nullable="false" />
+          <Property Name="UserId" Type="Int32" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_Emps_Accounts" FromRole="Emps" ToRole="Accounts" />
+          <NavigationProperty Name="SecUser" Relationship="Self.FK_Emps_SecUsers" FromRole="Emps" ToRole="SecUsers" />
+        </EntityType>
+        <EntityType Name="FiscalYear">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Year" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IsClosed" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="GenderId" />
+          </Key>
+          <Property Name="GenderId" Type="Byte" Nullable="false" />
+          <Property Name="GenderName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SymbolId" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Symbol" Relationship="Self.FK_Genders_Symbols" FromRole="Genders" ToRole="Symbols" />
+          <NavigationProperty Name="SecUsers" Relationship="Self.FK_SecUsers_Genders" FromRole="Genders" ToRole="SecUsers" />
+        </EntityType>
+        <EntityType Name="InvoiceLine">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="QTY" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="14" Scale="2" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="InvoiceId" Type="Guid" Nullable="false" />
+          <Property Name="ProductUnitId" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Invoice" Relationship="Self.FK_InvoiceLines_Invoices" FromRole="InvoiceLines" ToRole="Invoices" />
+          <NavigationProperty Name="ProductUnit" Relationship="Self.FK_InvoiceLines_ProductUnits" FromRole="InvoiceLines" ToRole="ProductUnits" />
+        </EntityType>
+        <EntityType Name="Invoice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Num" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Amount" Type="Decimal" Precision="14" Scale="2" Nullable="false" />
+          <Property Name="Descount" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="IsPayed" Type="Boolean" Nullable="false" />
+          <Property Name="Note" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="InvoiceTypeId" Type="Byte" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="StoreId" Type="Guid" Nullable="false" />
+          <Property Name="ClientName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ClientPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="AccountId" Type="Guid" />
+          <Property Name="Payed" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="IsCash" Type="Boolean" Nullable="false" />
+          <Property Name="IsRemind" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_Invoices_Accounts" FromRole="Invoices" ToRole="Accounts" />
+          <NavigationProperty Name="InvoiceLines" Relationship="Self.FK_InvoiceLines_Invoices" FromRole="Invoices" ToRole="InvoiceLines" />
+          <NavigationProperty Name="InvoiceType" Relationship="Self.FK_Invoices_InvoiceTypes" FromRole="Invoices" ToRole="InvoiceTypes" />
+          <NavigationProperty Name="Store" Relationship="Self.FK_Invoices_Stores" FromRole="Invoices" ToRole="Stores" />
+        </EntityType>
+        <EntityType Name="InvoiceType">
+          <Key>
+            <PropertyRef Name="InvoiceTypeId" />
+          </Key>
+          <Property Name="InvoiceTypeId" Type="Byte" Nullable="false" />
+          <Property Name="InvoiceTypeEnName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="InvoiceTypeArName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Invoices" Relationship="Self.FK_Invoices_InvoiceTypes" FromRole="InvoiceTypes" ToRole="Invoices" />
+        </EntityType>
+        <EntityType Name="JournalDet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Credit" Type="Decimal" Precision="14" Scale="2" Nullable="false" />
+          <Property Name="Debt" Type="Decimal" Precision="14" Scale="2" Nullable="false" />
+          <Property Name="Note" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="JournalId" Type="Guid" Nullable="false" />
+          <Property Name="AccountID" Type="Guid" Nullable="false" />
+          <Property Name="Num" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_JournalDets_Accounts" FromRole="JournalDets" ToRole="Accounts" />
+          <NavigationProperty Name="Journal" Relationship="Self.FK_JournalDets_Journals" FromRole="JournalDets" ToRole="Journals" />
+        </EntityType>
+        <EntityType Name="Journal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Num" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Note" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="JournalTypeId" Type="Byte" Nullable="false" />
+          <Property Name="RefId" Type="Guid" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="Details" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="JournalDets" Relationship="Self.FK_JournalDets_Journals" FromRole="Journals" ToRole="JournalDets" />
+          <NavigationProperty Name="JournalType" Relationship="Self.FK_Journals_JournalTypes" FromRole="Journals" ToRole="JournalTypes" />
+          <NavigationProperty Name="SecUser" Relationship="Self.FK_Journals_SecUsers" FromRole="Journals" ToRole="SecUsers" />
+        </EntityType>
+        <EntityType Name="JournalType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Byte" Nullable="false" />
+          <Property Name="EnName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ArName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Journals" Relationship="Self.FK_Journals_JournalTypes" FromRole="JournalTypes" ToRole="Journals" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="QTY" Type="Double" Nullable="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="Img" Type="String" MaxLength="2083" FixedLength="false" Unicode="false" />
+          <Property Name="Note" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CorpId" Type="Int32" Nullable="false" />
+          <Property Name="CategoryId" Type="Guid" Nullable="false" />
+          <Property Name="DefaultUnitId" Type="Byte" Nullable="false" />
+          <Property Name="LocalImg" Type="String" MaxLength="2083" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_Products_Categories" FromRole="Products" ToRole="Categories" />
+          <NavigationProperty Name="Unit" Relationship="Self.FK_Products_Units" FromRole="Products" ToRole="Units" />
+          <NavigationProperty Name="ProductUnits" Relationship="Self.FK_ProductUnits_Products" FromRole="Products" ToRole="ProductUnits" />
+        </EntityType>
+        <EntityType Name="ProductUnit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ProductSKU" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PriceBuy" Type="Decimal" Precision="14" Scale="2" Nullable="false" />
+          <Property Name="PriceSale" Type="Decimal" Precision="14" Scale="2" Nullable="false" />
+          <Property Name="ProductId" Type="Guid" Nullable="false" />
+          <Property Name="UnitId" Type="Byte" Nullable="false" />
+          <Property Name="Multiplier" Type="Double" Nullable="false" />
+          <NavigationProperty Name="InvoiceLines" Relationship="Self.FK_InvoiceLines_ProductUnits" FromRole="ProductUnits" ToRole="InvoiceLines" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_ProductUnits_Products" FromRole="ProductUnits" ToRole="Products" />
+          <NavigationProperty Name="Unit" Relationship="Self.FK_ProductUnits_Units" FromRole="ProductUnits" ToRole="Units" />
+        </EntityType>
+        <EntityType Name="ReceiptInvoice">
+          <Key>
+            <PropertyRef Name="ReceiptId" />
+            <PropertyRef Name="InvoiceId" />
+          </Key>
+          <Property Name="ReceiptId" Type="Guid" Nullable="false" />
+          <Property Name="InvoiceId" Type="Guid" Nullable="false" />
+          <Property Name="dumb" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Receipt">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Num" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Precision="14" Scale="2" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Note" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ReceiptTypeId" Type="Byte" Nullable="false" />
+          <Property Name="AccountId" Type="Guid" Nullable="false" />
+          <Property Name="IsCash" Type="Boolean" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_Receipts_Accounts" FromRole="Receipts" ToRole="Accounts" />
+          <NavigationProperty Name="ReceiptType" Relationship="Self.FK_Receipts_ReceiptTypes" FromRole="Receipts" ToRole="ReceiptTypes" />
+          <NavigationProperty Name="SecUser" Relationship="Self.FK_Receipts_SecUsers" FromRole="Receipts" ToRole="SecUsers" />
+        </EntityType>
+        <EntityType Name="ReceiptType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Byte" Nullable="false" />
+          <Property Name="EnName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ArName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Receipts" Relationship="Self.FK_Receipts_ReceiptTypes" FromRole="ReceiptTypes" ToRole="Receipts" />
+        </EntityType>
+        <EntityType Name="SecActionType">
+          <Key>
+            <PropertyRef Name="ActionId" />
+          </Key>
+          <Property Name="ActionId" Type="Byte" Nullable="false" />
+          <Property Name="ArName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EnName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SecLocalRoleTasks" Relationship="Self.FK_SecLocalRoleTasks_SecActionType" FromRole="SecActionType" ToRole="SecLocalRoleTasks" />
+          <NavigationProperty Name="SecRoleTasks" Relationship="Self.FK_SecRoleTasks_SecActionType" FromRole="SecActionType" ToRole="SecRoleTasks" />
+        </EntityType>
+        <EntityType Name="SecLocalRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CorpId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CorpInfo" Relationship="Self.FK_SecLocalGroups_CorpInfo" FromRole="SecLocalRoles" ToRole="CorpInfo" />
+          <NavigationProperty Name="SecLocalRoleTasks" Relationship="Self.FK_SecLocalRoleTasks_SecLocalRoles" FromRole="SecLocalRoles" ToRole="SecLocalRoleTasks" />
+          <NavigationProperty Name="SecUsers" Relationship="Self.FK_SecUsers_SecLocalRoles" FromRole="SecLocalRoles" ToRole="SecUsers" />
+        </EntityType>
+        <EntityType Name="SecLocalRoleTask">
+          <Key>
+            <PropertyRef Name="LocalRoleId" />
+            <PropertyRef Name="TaskId" />
+            <PropertyRef Name="ActionId" />
+          </Key>
+          <Property Name="LocalRoleId" Type="Guid" Nullable="false" />
+          <Property Name="TaskId" Type="Int16" Nullable="false" />
+          <Property Name="ActionId" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="SecActionType" Relationship="Self.FK_SecLocalRoleTasks_SecActionType" FromRole="SecLocalRoleTasks" ToRole="SecActionType" />
+          <NavigationProperty Name="SecLocalRole" Relationship="Self.FK_SecLocalRoleTasks_SecLocalRoles" FromRole="SecLocalRoleTasks" ToRole="SecLocalRoles" />
+          <NavigationProperty Name="SecTask" Relationship="Self.FK_SecLocalRoleTasks_SecTasks" FromRole="SecLocalRoleTasks" ToRole="SecTasks" />
+        </EntityType>
+        <EntityType Name="SecMasterTask">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Byte" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="5255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="SecTasks" Relationship="Self.FK_SecTasks_SecMasterTasks" FromRole="SecMasterTasks" ToRole="SecTasks" />
+        </EntityType>
+        <EntityType Name="SecRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Byte" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SecRoleTasks" Relationship="Self.FK_SecRoleTasks_SecRoles" FromRole="SecRoles" ToRole="SecRoleTasks" />
+          <NavigationProperty Name="SecUsers" Relationship="Self.FK_SecUsers_SecRoles" FromRole="SecRoles" ToRole="SecUsers" />
+        </EntityType>
+        <EntityType Name="SecRoleTask">
+          <Key>
+            <PropertyRef Name="RoleId" />
+            <PropertyRef Name="TaskId" />
+            <PropertyRef Name="ActionId" />
+          </Key>
+          <Property Name="RoleId" Type="Byte" Nullable="false" />
+          <Property Name="TaskId" Type="Int16" Nullable="false" />
+          <Property Name="ActionId" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="SecActionType" Relationship="Self.FK_SecRoleTasks_SecActionType" FromRole="SecRoleTasks" ToRole="SecActionType" />
+          <NavigationProperty Name="SecRole" Relationship="Self.FK_SecRoleTasks_SecRoles" FromRole="SecRoleTasks" ToRole="SecRoles" />
+          <NavigationProperty Name="SecTask" Relationship="Self.FK_SecRoleTasks_SecTasks" FromRole="SecRoleTasks" ToRole="SecTasks" />
+        </EntityType>
+        <EntityType Name="SecTask">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ArName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EnName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="TOrder" Type="Int16" />
+          <Property Name="TableName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cSelect" Type="Boolean" />
+          <Property Name="cInsert" Type="Boolean" />
+          <Property Name="cUpdate" Type="Boolean" />
+          <Property Name="cDelete" Type="Boolean" />
+          <Property Name="cPrint" Type="Boolean" />
+          <Property Name="MasterTaskId" Type="Byte" />
+          <NavigationProperty Name="SecLocalRoleTasks" Relationship="Self.FK_SecLocalRoleTasks_SecTasks" FromRole="SecTasks" ToRole="SecLocalRoleTasks" />
+          <NavigationProperty Name="SecMasterTask" Relationship="Self.FK_SecTasks_SecMasterTasks" FromRole="SecTasks" ToRole="SecMasterTasks" />
+          <NavigationProperty Name="SecRoleTasks" Relationship="Self.FK_SecRoleTasks_SecTasks" FromRole="SecTasks" ToRole="SecRoleTasks" />
+        </EntityType>
+        <EntityType Name="SecUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="320" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="Binary" MaxLength="255" FixedLength="false" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FristName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Birthday" Type="DateTime" Precision="0" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="RegisterDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UserImg" Type="String" MaxLength="2083" FixedLength="false" Unicode="false" />
+          <Property Name="CityId" Type="Int16" />
+          <Property Name="GenderId" Type="Byte" />
+          <Property Name="StatusId" Type="Byte" Nullable="false" />
+          <Property Name="LocalStatusId" Type="Byte" Nullable="false" />
+          <Property Name="RoleId" Type="Byte" Nullable="false" />
+          <Property Name="LocalRoleId" Type="Guid" Nullable="false" />
+          <Property Name="CorpId" Type="Int32" />
+          <Property Name="LocalImg" Type="String" MaxLength="2083" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Accounts" Relationship="Self.FK_Accounts_SecUsers" FromRole="SecUsers" ToRole="Accounts" />
+          <NavigationProperty Name="City" Relationship="Self.FK_SecUsers_Cities" FromRole="SecUsers" ToRole="Cities" />
+          <NavigationProperty Name="CorpInfo" Relationship="Self.FK_SecUsers_CorpInfo" FromRole="SecUsers" ToRole="CorpInfo" />
+          <NavigationProperty Name="Emps" Relationship="Self.FK_Emps_SecUsers" FromRole="SecUsers" ToRole="Emps" />
+          <NavigationProperty Name="Gender" Relationship="Self.FK_SecUsers_Genders" FromRole="SecUsers" ToRole="Genders" />
+          <NavigationProperty Name="Journals" Relationship="Self.FK_Journals_SecUsers" FromRole="SecUsers" ToRole="Journals" />
+          <NavigationProperty Name="Receipts" Relationship="Self.FK_Receipts_SecUsers" FromRole="SecUsers" ToRole="Receipts" />
+          <NavigationProperty Name="SecLocalRole" Relationship="Self.FK_SecUsers_SecLocalRoles" FromRole="SecUsers" ToRole="SecLocalRoles" />
+          <NavigationProperty Name="SecRole" Relationship="Self.FK_SecUsers_SecRoles" FromRole="SecUsers" ToRole="SecRoles" />
+          <NavigationProperty Name="UserStatus" Relationship="Self.FK_SecUsers_UserStatuses" FromRole="SecUsers" ToRole="UserStatuses" />
+          <NavigationProperty Name="UserStatus1" Relationship="Self.FK_SecUsers_UserStatuses1" FromRole="SecUsers" ToRole="UserStatuses" />
+        </EntityType>
+        <EntityType Name="Store">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Num" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CropId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CorpInfo" Relationship="Self.FK_Stores_CorpInfo" FromRole="Stores" ToRole="CorpInfo" />
+          <NavigationProperty Name="Invoices" Relationship="Self.FK_Invoices_Stores" FromRole="Stores" ToRole="Invoices" />
+        </EntityType>
+        <EntityType Name="Symbol">
+          <Key>
+            <PropertyRef Name="SymbolId" />
+          </Key>
+          <Property Name="SymbolId" Type="Byte" Nullable="false" />
+          <Property Name="SymbolName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TableName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CSelect" Type="Boolean" Nullable="false" />
+          <Property Name="CUpdate" Type="Boolean" Nullable="false" />
+          <Property Name="CInsert" Type="Boolean" Nullable="false" />
+          <Property Name="Cdelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Cities" Relationship="Self.FK__Cities__SymbolId__5165187F" FromRole="Symbols" ToRole="Cities" />
+          <NavigationProperty Name="Genders" Relationship="Self.FK_Genders_Symbols" FromRole="Symbols" ToRole="Genders" />
+          <NavigationProperty Name="Units" Relationship="Self.FK_UnitMaster_Symbols" FromRole="Symbols" ToRole="Units" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="UnitConversion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ProductId" Type="Guid" Nullable="false" />
+          <Property Name="BaseUnitId" Type="Byte" Nullable="false" />
+          <Property Name="Multiplier" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Unit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Byte" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SymbolId" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Products_Units" FromRole="Units" ToRole="Products" />
+          <NavigationProperty Name="ProductUnits" Relationship="Self.FK_ProductUnits_Units" FromRole="Units" ToRole="ProductUnits" />
+          <NavigationProperty Name="Symbol" Relationship="Self.FK_UnitMaster_Symbols" FromRole="Units" ToRole="Symbols" />
+        </EntityType>
+        <EntityType Name="UserStatus">
+          <Key>
+            <PropertyRef Name="UserStatusId" />
+          </Key>
+          <Property Name="UserStatusId" Type="Byte" Nullable="false" />
+          <Property Name="UserStatusName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="SecUsers" Relationship="Self.FK_SecUsers_UserStatuses" FromRole="UserStatuses" ToRole="SecUsers" />
+          <NavigationProperty Name="SecUsers1" Relationship="Self.FK_SecUsers_UserStatuses1" FromRole="UserStatuses" ToRole="SecUsers" />
+        </EntityType>
+        <EntityType Name="Visa">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Num" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CorpBankId" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="CorpBank" Relationship="Self.FK_Visas_CorpBanks" FromRole="Visas" ToRole="CorpBanks" />
+        </EntityType>
+        <EntityType Name="SecUserTrack">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="TaskId" />
+            <PropertyRef Name="ActionId" />
+          </Key>
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="TaskId" Type="Int16" Nullable="false" />
+          <Property Name="ActionId" Type="Byte" Nullable="false" />
+          <Property Name="TrackDate" Type="Int64" />
+        </EntityType>
+        <Association Name="FK_Accounts_EndAccounts">
+          <End Role="AccountEnds" Type="Self.AccountEnd" Multiplicity="0..1" />
+          <End Role="Accounts" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountEnds">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Accounts">
+              <PropertyRef Name="AccountEndId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accounts_Accounts">
+          <End Role="Accounts" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="Accounts1" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Accounts1">
+              <PropertyRef Name="AccountParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accounts_CorpInfo">
+          <End Role="CorpInfo" Type="Self.CorpInfo" Multiplicity="1" />
+          <End Role="Accounts" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CorpInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Accounts">
+              <PropertyRef Name="CropId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accounts_SecUsers">
+          <End Role="SecUsers" Type="Self.SecUser" Multiplicity="1" />
+          <End Role="Accounts" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SecUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Accounts">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clients_Accounts">
+          <End Role="Accounts" Type="Self.Account" Multiplicity="1" />
+          <End Role="Clients" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Clients">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Emps_Accounts">
+          <End Role="Accounts" Type="Self.Account" Multiplicity="1" />
+          <End Role="Emps" Type="Self.Emp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Emps">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoices_Accounts">
+          <End Role="Accounts" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="Invoices" Type="Self.Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Invoices">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JournalDets_Accounts">
+          <End Role="Accounts" Type="Self.Account" Multiplicity="1" />
+          <End Role="JournalDets" Type="Self.JournalDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="JournalDets">
+              <PropertyRef Name="AccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Receipts_Accounts">
+          <End Role="Accounts" Type="Self.Account" Multiplicity="1" />
+          <End Role="Receipts" Type="Self.Receipt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Receipts">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CorpBanks_Banks">
+          <End Role="Banks" Type="Self.Bank" Multiplicity="1" />
+          <End Role="CorpBanks" Type="Self.CorpBank" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Banks">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CorpBanks">
+              <PropertyRef Name="BankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Categories_CorpTypes">
+          <End Role="CorpTypes" Type="Self.CorpType" Multiplicity="1" />
+          <End Role="Categories" Type="Self.Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CorpTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Categories">
+              <PropertyRef Name="CorpTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Categories">
+          <End Role="Categories" Type="Self.Category" Multiplicity="1" />
+          <End Role="Products" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cities__SymbolId__5165187F">
+          <End Role="Symbols" Type="Self.Symbol" Multiplicity="1" />
+          <End Role="Cities" Type="Self.City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Symbols">
+              <PropertyRef Name="SymbolId" />
+            </Principal>
+            <Dependent Role="Cities">
+              <PropertyRef Name="SymbolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SecUsers_Cities">
+          <End Role="Cities" Type="Self.City" Multiplicity="0..1" />
+          <End Role="SecUsers" Type="Self.SecUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="SecUsers">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clients_Clients">
+          <End Role="ClientTypes" Type="Self.ClientType" Multiplicity="1" />
+          <End Role="Clients" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Clients">
+              <PropertyRef Name="ClinetTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Visas_CorpBanks">
+          <End Role="CorpBanks" Type="Self.CorpBank" Multiplicity="1" />
+          <End Role="Visas" Type="Self.Visa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CorpBanks">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Visas">
+              <PropertyRef Name="CorpBankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CorpInfo_CropStatus">
+          <End Role="CropStatus" Type="Self.CropStatu" Multiplicity="1" />
+          <End Role="CorpInfo" Type="Self.CorpInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CropStatus">
+              <PropertyRef Name="CropStatusId" />
+            </Principal>
+            <Dependent Role="CorpInfo">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SecLocalGroups_CorpInfo">
+          <End Role="CorpInfo" Type="Self.CorpInfo" Multiplicity="1" />
+          <End Role="SecLocalRoles" Type="Self.SecLocalRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CorpInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SecLocalRoles">
+              <PropertyRef Name="CorpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SecUsers_CorpInfo">
+          <End Role="CorpInfo" Type="Self.CorpInfo" Multiplicity="0..1" />
+          <End Role="SecUsers" Type="Self.SecUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CorpInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SecUsers">
+              <PropertyRef Name="CorpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stores_CorpInfo">
+          <End Role="CorpInfo" Type="Self.CorpInfo" Multiplicity="1" />
+          <End Role="Stores" Type="Self.Store" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CorpInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Stores">
+              <PropertyRef Name="CropId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Emps_SecUsers">
+          <End Role="SecUsers" Type="Self.SecUser" Multiplicity="0..1" />
+          <End Role="Emps" Type="Self.Emp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SecUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Emps">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Genders_Symbols">
+          <End Role="Symbols" Type="Self.Symbol" Multiplicity="1" />
+          <End Role="Genders" Type="Self.Gender" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Symbols">
+              <PropertyRef Name="SymbolId" />
+            </Principal>
+            <Dependent Role="Genders">
+              <PropertyRef Name="SymbolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SecUsers_Genders">
+          <End Role="Genders" Type="Self.Gender" Multiplicity="0..1" />
+          <End Role="SecUsers" Type="Self.SecUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genders">
+              <PropertyRef Name="GenderId" />
+            </Principal>
+            <Dependent Role="SecUsers">
+              <PropertyRef Name="GenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InvoiceLines_Invoices">
+          <End Role="Invoices" Type="Self.Invoice" Multiplicity="1" />
+          <End Role="InvoiceLines" Type="Self.InvoiceLine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Invoices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InvoiceLines">
+              <PropertyRef Name="InvoiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InvoiceLines_ProductUnits">
+          <End Role="ProductUnits" Type="Self.ProductUnit" Multiplicity="1" />
+          <End Role="InvoiceLines" Type="Self.InvoiceLine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductUnits">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InvoiceLines">
+              <PropertyRef Name="ProductUnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoices_InvoiceTypes">
+          <End Role="InvoiceTypes" Type="Self.InvoiceType" Multiplicity="1" />
+          <End Role="Invoices" Type="Self.Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InvoiceTypes">
+              <PropertyRef Name="InvoiceTypeId" />
+            </Principal>
+            <Dependent Role="Invoices">
+              <PropertyRef Name="InvoiceTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoices_Stores">
+          <End Role="Stores" Type="Self.Store" Multiplicity="1" />
+          <End Role="Invoices" Type="Self.Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stores">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Invoices">
+              <PropertyRef Name="StoreId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JournalDets_Journals">
+          <End Role="Journals" Type="Self.Journal" Multiplicity="1" />
+          <End Role="JournalDets" Type="Self.JournalDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Journals">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="JournalDets">
+              <PropertyRef Name="JournalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Journals_JournalTypes">
+          <End Role="JournalTypes" Type="Self.JournalType" Multiplicity="1" />
+          <End Role="Journals" Type="Self.Journal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JournalTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Journals">
+              <PropertyRef Name="JournalTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Journals_SecUsers">
+          <End Role="SecUsers" Type="Self.SecUser" Multiplicity="0..1" />
+          <End Role="Journals" Type="Self.Journal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SecUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Journals">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Units">
+          <End Role="Units" Type="Self.Unit" Multiplicity="1" />
+          <End Role="Products" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Units">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="DefaultUnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductUnits_Products">
+          <End Role="Products" Type="Self.Product" Multiplicity="1" />
+          <End Role="ProductUnits" Type="Self.ProductUnit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductUnits">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductUnits_Units">
+          <End Role="Units" Type="Self.Unit" Multiplicity="1" />
+          <End Role="ProductUnits" Type="Self.ProductUnit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Units">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductUnits">
+              <PropertyRef Name="UnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Receipts_ReceiptTypes">
+          <End Role="ReceiptTypes" Type="Self.ReceiptType" Multiplicity="1" />
+          <End Role="Receipts" Type="Self.Receipt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReceiptTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Receipts">
+              <PropertyRef Name="ReceiptTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Receipts_SecUsers">
+          <End Role="SecUsers" Type="Self.SecUser" Multiplicity="1" />
+          <End Role="Receipts" Type="Self.Receipt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SecUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Receipts">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SecLocalRoleTasks_SecActionType">
+          <End Role="SecActionType" Type="Self.SecActionType" Multiplicity="1" />
+          <End Role="SecLocalRoleTasks" Type="Self.SecLocalRoleTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SecActionType">
+              <PropertyRef Name="ActionId" />
+            </Principal>
+            <Dependent Role="SecLocalRoleTasks">
+              <PropertyRef Name="ActionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SecRoleTasks_SecActionType">
+          <End Role="SecActionType" Type="Self.SecActionType" Multiplicity="1" />
+          <End Role="SecRoleTasks" Type="Self.SecRoleTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SecActionType">
+              <PropertyRef Name="ActionId" />
+            </Principal>
+            <Dependent Role="SecRoleTasks">
+              <PropertyRef Name="ActionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SecLocalRoleTasks_SecLocalRoles">
+          <End Role="SecLocalRoles" Type="Self.SecLocalRole" Multiplicity="1" />
+          <End Role="SecLocalRoleTasks" Type="Self.SecLocalRoleTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SecLocalRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SecLocalRoleTasks">
+              <PropertyRef Name="LocalRoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SecUsers_SecLocalRoles">
+          <End Role="SecLocalRoles" Type="Self.SecLocalRole" Multiplicity="1" />
+          <End Role="SecUsers" Type="Self.SecUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SecLocalRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SecUsers">
+              <PropertyRef Name="LocalRoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SecLocalRoleTasks_SecTasks">
+          <End Role="SecTasks" Type="Self.SecTask" Multiplicity="1" />
+          <End Role="SecLocalRoleTasks" Type="Self.SecLocalRoleTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SecTasks">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SecLocalRoleTasks">
+              <PropertyRef Name="TaskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SecTasks_SecMasterTasks">
+          <End Role="SecMasterTasks" Type="Self.SecMasterTask" Multiplicity="0..1" />
+          <End Role="SecTasks" Type="Self.SecTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SecMasterTasks">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SecTasks">
+              <PropertyRef Name="MasterTaskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SecRoleTasks_SecRoles">
+          <End Role="SecRoles" Type="Self.SecRole" Multiplicity="1" />
+          <End Role="SecRoleTasks" Type="Self.SecRoleTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SecRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SecRoleTasks">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SecUsers_SecRoles">
+          <End Role="SecRoles" Type="Self.SecRole" Multiplicity="1" />
+          <End Role="SecUsers" Type="Self.SecUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SecRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SecUsers">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SecRoleTasks_SecTasks">
+          <End Role="SecTasks" Type="Self.SecTask" Multiplicity="1" />
+          <End Role="SecRoleTasks" Type="Self.SecRoleTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SecTasks">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SecRoleTasks">
+              <PropertyRef Name="TaskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SecUsers_UserStatuses">
+          <End Role="UserStatuses" Type="Self.UserStatus" Multiplicity="1" />
+          <End Role="SecUsers" Type="Self.SecUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserStatuses">
+              <PropertyRef Name="UserStatusId" />
+            </Principal>
+            <Dependent Role="SecUsers">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SecUsers_UserStatuses1">
+          <End Role="UserStatuses" Type="Self.UserStatus" Multiplicity="1" />
+          <End Role="SecUsers" Type="Self.SecUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserStatuses">
+              <PropertyRef Name="UserStatusId" />
+            </Principal>
+            <Dependent Role="SecUsers">
+              <PropertyRef Name="LocalStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UnitMaster_Symbols">
+          <End Role="Symbols" Type="Self.Symbol" Multiplicity="1" />
+          <End Role="Units" Type="Self.Unit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Symbols">
+              <PropertyRef Name="SymbolId" />
+            </Principal>
+            <Dependent Role="Units">
+              <PropertyRef Name="SymbolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CropAccountingAppEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AccountEnds" EntityType="Self.AccountEnd" />
+          <EntitySet Name="Accounts" EntityType="Self.Account" />
+          <EntitySet Name="Banks" EntityType="Self.Bank" />
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Cities" EntityType="Self.City" />
+          <EntitySet Name="Clients" EntityType="Self.Client" />
+          <EntitySet Name="ClientTypes" EntityType="Self.ClientType" />
+          <EntitySet Name="CorpBanks" EntityType="Self.CorpBank" />
+          <EntitySet Name="CorpInfoes" EntityType="Self.CorpInfo" />
+          <EntitySet Name="CorpTypes" EntityType="Self.CorpType" />
+          <EntitySet Name="Countries" EntityType="Self.Country" />
+          <EntitySet Name="CropStatus" EntityType="Self.CropStatu" />
+          <EntitySet Name="Emps" EntityType="Self.Emp" />
+          <EntitySet Name="FiscalYears" EntityType="Self.FiscalYear" />
+          <EntitySet Name="Genders" EntityType="Self.Gender" />
+          <EntitySet Name="InvoiceLines" EntityType="Self.InvoiceLine" />
+          <EntitySet Name="Invoices" EntityType="Self.Invoice" />
+          <EntitySet Name="InvoiceTypes" EntityType="Self.InvoiceType" />
+          <EntitySet Name="JournalDets" EntityType="Self.JournalDet" />
+          <EntitySet Name="Journals" EntityType="Self.Journal" />
+          <EntitySet Name="JournalTypes" EntityType="Self.JournalType" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="ProductUnits" EntityType="Self.ProductUnit" />
+          <EntitySet Name="ReceiptInvoices" EntityType="Self.ReceiptInvoice" />
+          <EntitySet Name="Receipts" EntityType="Self.Receipt" />
+          <EntitySet Name="ReceiptTypes" EntityType="Self.ReceiptType" />
+          <EntitySet Name="SecActionTypes" EntityType="Self.SecActionType" />
+          <EntitySet Name="SecLocalRoles" EntityType="Self.SecLocalRole" />
+          <EntitySet Name="SecLocalRoleTasks" EntityType="Self.SecLocalRoleTask" />
+          <EntitySet Name="SecMasterTasks" EntityType="Self.SecMasterTask" />
+          <EntitySet Name="SecRoles" EntityType="Self.SecRole" />
+          <EntitySet Name="SecRoleTasks" EntityType="Self.SecRoleTask" />
+          <EntitySet Name="SecTasks" EntityType="Self.SecTask" />
+          <EntitySet Name="SecUsers" EntityType="Self.SecUser" />
+          <EntitySet Name="Stores" EntityType="Self.Store" />
+          <EntitySet Name="Symbols" EntityType="Self.Symbol" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="UnitConversions" EntityType="Self.UnitConversion" />
+          <EntitySet Name="Units" EntityType="Self.Unit" />
+          <EntitySet Name="UserStatuses" EntityType="Self.UserStatus" />
+          <EntitySet Name="Visas" EntityType="Self.Visa" />
+          <EntitySet Name="SecUserTracks" EntityType="Self.SecUserTrack" />
+          <AssociationSet Name="FK_Accounts_EndAccounts" Association="Self.FK_Accounts_EndAccounts">
+            <End Role="AccountEnds" EntitySet="AccountEnds" />
+            <End Role="Accounts" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accounts_Accounts" Association="Self.FK_Accounts_Accounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Accounts1" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accounts_CorpInfo" Association="Self.FK_Accounts_CorpInfo">
+            <End Role="CorpInfo" EntitySet="CorpInfoes" />
+            <End Role="Accounts" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accounts_SecUsers" Association="Self.FK_Accounts_SecUsers">
+            <End Role="SecUsers" EntitySet="SecUsers" />
+            <End Role="Accounts" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clients_Accounts" Association="Self.FK_Clients_Accounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Clients" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Emps_Accounts" Association="Self.FK_Emps_Accounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Emps" EntitySet="Emps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoices_Accounts" Association="Self.FK_Invoices_Accounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Invoices" EntitySet="Invoices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JournalDets_Accounts" Association="Self.FK_JournalDets_Accounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="JournalDets" EntitySet="JournalDets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Receipts_Accounts" Association="Self.FK_Receipts_Accounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Receipts" EntitySet="Receipts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CorpBanks_Banks" Association="Self.FK_CorpBanks_Banks">
+            <End Role="Banks" EntitySet="Banks" />
+            <End Role="CorpBanks" EntitySet="CorpBanks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Categories_CorpTypes" Association="Self.FK_Categories_CorpTypes">
+            <End Role="CorpTypes" EntitySet="CorpTypes" />
+            <End Role="Categories" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Categories" Association="Self.FK_Products_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cities__SymbolId__5165187F" Association="Self.FK__Cities__SymbolId__5165187F">
+            <End Role="Symbols" EntitySet="Symbols" />
+            <End Role="Cities" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SecUsers_Cities" Association="Self.FK_SecUsers_Cities">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="SecUsers" EntitySet="SecUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clients_Clients" Association="Self.FK_Clients_Clients">
+            <End Role="ClientTypes" EntitySet="ClientTypes" />
+            <End Role="Clients" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Visas_CorpBanks" Association="Self.FK_Visas_CorpBanks">
+            <End Role="CorpBanks" EntitySet="CorpBanks" />
+            <End Role="Visas" EntitySet="Visas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CorpInfo_CropStatus" Association="Self.FK_CorpInfo_CropStatus">
+            <End Role="CropStatus" EntitySet="CropStatus" />
+            <End Role="CorpInfo" EntitySet="CorpInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SecLocalGroups_CorpInfo" Association="Self.FK_SecLocalGroups_CorpInfo">
+            <End Role="CorpInfo" EntitySet="CorpInfoes" />
+            <End Role="SecLocalRoles" EntitySet="SecLocalRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SecUsers_CorpInfo" Association="Self.FK_SecUsers_CorpInfo">
+            <End Role="CorpInfo" EntitySet="CorpInfoes" />
+            <End Role="SecUsers" EntitySet="SecUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stores_CorpInfo" Association="Self.FK_Stores_CorpInfo">
+            <End Role="CorpInfo" EntitySet="CorpInfoes" />
+            <End Role="Stores" EntitySet="Stores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Emps_SecUsers" Association="Self.FK_Emps_SecUsers">
+            <End Role="SecUsers" EntitySet="SecUsers" />
+            <End Role="Emps" EntitySet="Emps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Genders_Symbols" Association="Self.FK_Genders_Symbols">
+            <End Role="Symbols" EntitySet="Symbols" />
+            <End Role="Genders" EntitySet="Genders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SecUsers_Genders" Association="Self.FK_SecUsers_Genders">
+            <End Role="Genders" EntitySet="Genders" />
+            <End Role="SecUsers" EntitySet="SecUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InvoiceLines_Invoices" Association="Self.FK_InvoiceLines_Invoices">
+            <End Role="Invoices" EntitySet="Invoices" />
+            <End Role="InvoiceLines" EntitySet="InvoiceLines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InvoiceLines_ProductUnits" Association="Self.FK_InvoiceLines_ProductUnits">
+            <End Role="ProductUnits" EntitySet="ProductUnits" />
+            <End Role="InvoiceLines" EntitySet="InvoiceLines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoices_InvoiceTypes" Association="Self.FK_Invoices_InvoiceTypes">
+            <End Role="InvoiceTypes" EntitySet="InvoiceTypes" />
+            <End Role="Invoices" EntitySet="Invoices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoices_Stores" Association="Self.FK_Invoices_Stores">
+            <End Role="Stores" EntitySet="Stores" />
+            <End Role="Invoices" EntitySet="Invoices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JournalDets_Journals" Association="Self.FK_JournalDets_Journals">
+            <End Role="Journals" EntitySet="Journals" />
+            <End Role="JournalDets" EntitySet="JournalDets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Journals_JournalTypes" Association="Self.FK_Journals_JournalTypes">
+            <End Role="JournalTypes" EntitySet="JournalTypes" />
+            <End Role="Journals" EntitySet="Journals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Journals_SecUsers" Association="Self.FK_Journals_SecUsers">
+            <End Role="SecUsers" EntitySet="SecUsers" />
+            <End Role="Journals" EntitySet="Journals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Units" Association="Self.FK_Products_Units">
+            <End Role="Units" EntitySet="Units" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductUnits_Products" Association="Self.FK_ProductUnits_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="ProductUnits" EntitySet="ProductUnits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductUnits_Units" Association="Self.FK_ProductUnits_Units">
+            <End Role="Units" EntitySet="Units" />
+            <End Role="ProductUnits" EntitySet="ProductUnits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Receipts_ReceiptTypes" Association="Self.FK_Receipts_ReceiptTypes">
+            <End Role="ReceiptTypes" EntitySet="ReceiptTypes" />
+            <End Role="Receipts" EntitySet="Receipts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Receipts_SecUsers" Association="Self.FK_Receipts_SecUsers">
+            <End Role="SecUsers" EntitySet="SecUsers" />
+            <End Role="Receipts" EntitySet="Receipts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SecLocalRoleTasks_SecActionType" Association="Self.FK_SecLocalRoleTasks_SecActionType">
+            <End Role="SecActionType" EntitySet="SecActionTypes" />
+            <End Role="SecLocalRoleTasks" EntitySet="SecLocalRoleTasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SecRoleTasks_SecActionType" Association="Self.FK_SecRoleTasks_SecActionType">
+            <End Role="SecActionType" EntitySet="SecActionTypes" />
+            <End Role="SecRoleTasks" EntitySet="SecRoleTasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SecLocalRoleTasks_SecLocalRoles" Association="Self.FK_SecLocalRoleTasks_SecLocalRoles">
+            <End Role="SecLocalRoles" EntitySet="SecLocalRoles" />
+            <End Role="SecLocalRoleTasks" EntitySet="SecLocalRoleTasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SecUsers_SecLocalRoles" Association="Self.FK_SecUsers_SecLocalRoles">
+            <End Role="SecLocalRoles" EntitySet="SecLocalRoles" />
+            <End Role="SecUsers" EntitySet="SecUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SecLocalRoleTasks_SecTasks" Association="Self.FK_SecLocalRoleTasks_SecTasks">
+            <End Role="SecTasks" EntitySet="SecTasks" />
+            <End Role="SecLocalRoleTasks" EntitySet="SecLocalRoleTasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SecTasks_SecMasterTasks" Association="Self.FK_SecTasks_SecMasterTasks">
+            <End Role="SecMasterTasks" EntitySet="SecMasterTasks" />
+            <End Role="SecTasks" EntitySet="SecTasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SecRoleTasks_SecRoles" Association="Self.FK_SecRoleTasks_SecRoles">
+            <End Role="SecRoles" EntitySet="SecRoles" />
+            <End Role="SecRoleTasks" EntitySet="SecRoleTasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SecUsers_SecRoles" Association="Self.FK_SecUsers_SecRoles">
+            <End Role="SecRoles" EntitySet="SecRoles" />
+            <End Role="SecUsers" EntitySet="SecUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SecRoleTasks_SecTasks" Association="Self.FK_SecRoleTasks_SecTasks">
+            <End Role="SecTasks" EntitySet="SecTasks" />
+            <End Role="SecRoleTasks" EntitySet="SecRoleTasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SecUsers_UserStatuses" Association="Self.FK_SecUsers_UserStatuses">
+            <End Role="UserStatuses" EntitySet="UserStatuses" />
+            <End Role="SecUsers" EntitySet="SecUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SecUsers_UserStatuses1" Association="Self.FK_SecUsers_UserStatuses1">
+            <End Role="UserStatuses" EntitySet="UserStatuses" />
+            <End Role="SecUsers" EntitySet="SecUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UnitMaster_Symbols" Association="Self.FK_UnitMaster_Symbols">
+            <End Role="Symbols" EntitySet="Symbols" />
+            <End Role="Units" EntitySet="Units" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CropAccountingAppModelStoreContainer" CdmEntityContainer="CropAccountingAppEntities">
+          <EntitySetMapping Name="AccountEnds">
+            <EntityTypeMapping TypeName="CropAccountingAppModel.AccountEnd">
+              <MappingFragment StoreEntitySet="AccountEnds">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Accounts">
+            <EntityTypeMapping TypeName="CropAccountingAppModel.Account">
+              <MappingFragment StoreEntitySet="Accounts">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="EnName" ColumnName="EnName" />
+                <ScalarProperty Name="ArName" ColumnName="ArName" />
+                <ScalarProperty Name="Deleteable" ColumnName="Deleteable" />
+                <ScalarProperty Name="AccountEndId" ColumnName="AccountEndId" />
+                <ScalarProperty Name="AccountParentId" ColumnName="AccountParentId" />
+                <ScalarProperty Name="CropId" ColumnName="CropId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Banks">
+            <EntityTypeMapping TypeName="CropAccountingAppModel.Bank">
+              <MappingFragment StoreEntitySet="Banks">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="CropAccountingAppModel.Category">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CorpTypeId" ColumnName="CorpTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="CropAccountingAppModel.City">
+              <MappingFragment StoreEntitySet="Cities">
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="SymbolId" ColumnName="SymbolId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="CropAccountingAppModel.Client">
+              <MappingFragment StoreEntitySet="Clients">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Img" ColumnName="Img" />
+                <ScalarProperty Name="LocalImg" ColumnName="LocalImg" />
+                <ScalarProperty Name="ClinetTypeId" ColumnName="ClinetTypeId" />
+                <ScalarProperty Name="IsCompany" ColumnName="IsCompany" />
+                <ScalarProperty Name="StatusN" ColumnName="StatusN" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="LocalImage" ColumnName="LocalImage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientTypes">
+            <EntityTypeMapping TypeName="CropAccountingAppModel.ClientType">
+              <MappingFragment StoreEntitySet="ClientTypes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CorpBanks">
+            <EntityTypeMapping TypeName="CropAccountingAppModel.CorpBank">
+              <MappingFragment StoreEntitySet="CorpBanks">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="CorpId" ColumnName="CorpId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CorpInfoes">
+            <EntityTypeMapping TypeName="CropAccountingAppModel.CorpInfo">
+              <MappingFragment StoreEntitySet="CorpInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+                <ScalarProperty Name="RenewDate" ColumnName="RenewDate" />
+                <ScalarProperty Name="CorpTypeId" ColumnName="CorpTypeId" />
+                <ScalarProperty Name="LocalImg" ColumnName="LocalImg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CorpTypes">
+            <EntityTypeMapping TypeName="CropAccountingAppModel.CorpType">
+              <MappingFragment StoreEntitySet="CorpTypes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="CropAccountingAppModel.Country">
+              <MappingFragment StoreEntitySet="Countries">
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="SymbolId" ColumnName="SymbolId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CropStatus">
+            <EntityTypeMapping TypeName="CropAccountingAppModel.CropStatu">
+              <MappingFragment StoreEntitySet="CropStatus">
+                <ScalarProperty Name="CropStatusId" ColumnName="CropStatusId" />
+                <ScalarProperty Name="CropStatusName" ColumnName="CropStatusName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Emps">
+            <EntityTypeMapping TypeName="CropAccountingAppModel.Emp">
+              <MappingFragment StoreEntitySet="Emps">
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="EmpName" ColumnName="EmpName" />
+                <ScalarProperty Name="EmpPhone" ColumnName="EmpPhone" />
+                <ScalarProperty Name="EmpAddress" ColumnName="EmpAddress" />
+                <ScalarProperty Name="EmpImage" ColumnName="EmpImage" />
+                <ScalarProperty Name="EmpSal" ColumnName="EmpSal" />
+                <ScalarProperty Name="EmpHireDate" ColumnName="EmpHireDate" />
+                <ScalarProperty Name="EmpComm" ColumnName="EmpComm" />
+                <ScalarProperty Name="StatusN" ColumnName="StatusN" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FiscalYears">
+            <EntityTypeMapping TypeName="CropAccountingAppModel.FiscalYear">
+              <MappingFragment StoreEntitySet="FiscalYears">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="IsClosed" ColumnName="IsClosed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genders">
+            <EntityTypeMapping TypeName="CropAccountingAppModel.Gender">
+              <MappingFragment StoreEntitySet="Genders">
+                <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+                <ScalarProperty Name="GenderName" ColumnName="GenderName" />
+                <ScalarProperty Name="SymbolId" ColumnName="SymbolId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InvoiceLines">
+            <EntityTypeMapping TypeName="CropAccountingAppModel.InvoiceLine">
+              <MappingFragment StoreEntitySet="InvoiceLines">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="QTY" ColumnName="QTY" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
+                <ScalarProperty Name="ProductUnitId" ColumnName="ProductUnitId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Invoices">
+            <EntityTypeMapping TypeName="CropAccountingAppModel.Invoice">
+              <MappingFragment StoreEntitySet="Invoices">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Descount" ColumnName="Descount" />
+                <ScalarProperty Name="IsPayed" ColumnName="IsPayed" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="InvoiceTypeId" ColumnName="InvoiceTypeId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+                <ScalarProperty Name="ClientPhone" ColumnName="ClientPhone" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="Payed" ColumnName="Payed" />
+                <ScalarProperty Name="IsCash" ColumnName="IsCash" />
+                <ScalarProperty Name="IsRemind" ColumnName="IsRemind" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InvoiceTypes">
+            <EntityTypeMapping TypeName="CropAccountingAppModel.InvoiceType">
+              <MappingFragment StoreEntitySet="InvoiceTypes">
+                <ScalarProperty Name="InvoiceTypeId" ColumnName="InvoiceTypeId" />
+                <ScalarProperty Name="InvoiceTypeEnName" ColumnName="InvoiceTypeEnName" />
+                <ScalarProperty Name="InvoiceTypeArName" ColumnName="InvoiceTypeArName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JournalDets">
+            <EntityTypeMapping TypeName="CropAccountingAppModel.JournalDet">
+              <MappingFragment StoreEntitySet="JournalDets">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+                <ScalarProperty Name="Debt" ColumnName="Debt" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="JournalId" ColumnName="JournalId" />
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Journals">
+            <EntityTypeMapping TypeName="CropAccountingAppModel.Journal">
+              <MappingFragment StoreEntitySet="Journals">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="JournalTypeId" ColumnName="JournalTypeId" />
+                <ScalarProperty Name="RefId" ColumnName="RefId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JournalTypes">
+            <EntityTypeMapping TypeName="CropAccountingAppModel.JournalType">
+              <MappingFragment StoreEntitySet="JournalTypes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="EnName" ColumnName="EnName" />
+                <ScalarProperty Name="ArName" ColumnName="ArName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="CropAccountingAppModel.Product">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="QTY" ColumnName="QTY" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Img" ColumnName="Img" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="CorpId" ColumnName="CorpId" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="DefaultUnitId" ColumnName="DefaultUnitId" />
+                <ScalarProperty Name="LocalImg" ColumnName="LocalImg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductUnits">
+            <EntityTypeMapping TypeName="CropAccountingAppModel.ProductUnit">
+              <MappingFragment StoreEntitySet="ProductUnits">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProductSKU" ColumnName="ProductSKU" />
+                <ScalarProperty Name="PriceBuy" ColumnName="PriceBuy" />
+                <ScalarProperty Name="PriceSale" ColumnName="PriceSale" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+                <ScalarProperty Name="Multiplier" ColumnName="Multiplier" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReceiptInvoices">
+            <EntityTypeMapping TypeName="CropAccountingAppModel.ReceiptInvoice">
+              <MappingFragment StoreEntitySet="ReceiptInvoices">
+                <ScalarProperty Name="ReceiptId" ColumnName="ReceiptId" />
+                <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
+                <ScalarProperty Name="dumb" ColumnName="dumb" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Receipts">
+            <EntityTypeMapping TypeName="CropAccountingAppModel.Receipt">
+              <MappingFragment StoreEntitySet="Receipts">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="ReceiptTypeId" ColumnName="ReceiptTypeId" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="IsCash" ColumnName="IsCash" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReceiptTypes">
+            <EntityTypeMapping TypeName="CropAccountingAppModel.ReceiptType">
+              <MappingFragment StoreEntitySet="ReceiptTypes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="EnName" ColumnName="EnName" />
+                <ScalarProperty Name="ArName" ColumnName="ArName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SecActionTypes">
+            <EntityTypeMapping TypeName="CropAccountingAppModel.SecActionType">
+              <MappingFragment StoreEntitySet="SecActionType">
+                <ScalarProperty Name="ActionId" ColumnName="ActionId" />
+                <ScalarProperty Name="ArName" ColumnName="ArName" />
+                <ScalarProperty Name="EnName" ColumnName="EnName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SecLocalRoles">
+            <EntityTypeMapping TypeName="CropAccountingAppModel.SecLocalRole">
+              <MappingFragment StoreEntitySet="SecLocalRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="CorpId" ColumnName="CorpId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SecLocalRoleTasks">
+            <EntityTypeMapping TypeName="CropAccountingAppModel.SecLocalRoleTask">
+              <MappingFragment StoreEntitySet="SecLocalRoleTasks">
+                <ScalarProperty Name="LocalRoleId" ColumnName="LocalRoleId" />
+                <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+                <ScalarProperty Name="ActionId" ColumnName="ActionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SecMasterTasks">
+            <EntityTypeMapping TypeName="CropAccountingAppModel.SecMasterTask">
+              <MappingFragment StoreEntitySet="SecMasterTasks">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SecRoles">
+            <EntityTypeMapping TypeName="CropAccountingAppModel.SecRole">
+              <MappingFragment StoreEntitySet="SecRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SecRoleTasks">
+            <EntityTypeMapping TypeName="CropAccountingAppModel.SecRoleTask">
+              <MappingFragment StoreEntitySet="SecRoleTasks">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+                <ScalarProperty Name="ActionId" ColumnName="ActionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SecTasks">
+            <EntityTypeMapping TypeName="CropAccountingAppModel.SecTask">
+              <MappingFragment StoreEntitySet="SecTasks">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ArName" ColumnName="ArName" />
+                <ScalarProperty Name="EnName" ColumnName="EnName" />
+                <ScalarProperty Name="TOrder" ColumnName="TOrder" />
+                <ScalarProperty Name="TableName" ColumnName="TableName" />
+                <ScalarProperty Name="cSelect" ColumnName="cSelect" />
+                <ScalarProperty Name="cInsert" ColumnName="cInsert" />
+                <ScalarProperty Name="cUpdate" ColumnName="cUpdate" />
+                <ScalarProperty Name="cDelete" ColumnName="cDelete" />
+                <ScalarProperty Name="cPrint" ColumnName="cPrint" />
+                <ScalarProperty Name="MasterTaskId" ColumnName="MasterTaskId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SecUsers">
+            <EntityTypeMapping TypeName="CropAccountingAppModel.SecUser">
+              <MappingFragment StoreEntitySet="SecUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="FristName" ColumnName="FristName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+                <ScalarProperty Name="UserImg" ColumnName="UserImg" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="LocalStatusId" ColumnName="LocalStatusId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="LocalRoleId" ColumnName="LocalRoleId" />
+                <ScalarProperty Name="CorpId" ColumnName="CorpId" />
+                <ScalarProperty Name="LocalImg" ColumnName="LocalImg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stores">
+            <EntityTypeMapping TypeName="CropAccountingAppModel.Store">
+              <MappingFragment StoreEntitySet="Stores">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CropId" ColumnName="CropId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Symbols">
+            <EntityTypeMapping TypeName="CropAccountingAppModel.Symbol">
+              <MappingFragment StoreEntitySet="Symbols">
+                <ScalarProperty Name="SymbolId" ColumnName="SymbolId" />
+                <ScalarProperty Name="SymbolName" ColumnName="SymbolName" />
+                <ScalarProperty Name="TableName" ColumnName="TableName" />
+                <ScalarProperty Name="CSelect" ColumnName="CSelect" />
+                <ScalarProperty Name="CUpdate" ColumnName="CUpdate" />
+                <ScalarProperty Name="CInsert" ColumnName="CInsert" />
+                <ScalarProperty Name="Cdelete" ColumnName="Cdelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="CropAccountingAppModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UnitConversions">
+            <EntityTypeMapping TypeName="CropAccountingAppModel.UnitConversion">
+              <MappingFragment StoreEntitySet="UnitConversions">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="BaseUnitId" ColumnName="BaseUnitId" />
+                <ScalarProperty Name="Multiplier" ColumnName="Multiplier" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Units">
+            <EntityTypeMapping TypeName="CropAccountingAppModel.Unit">
+              <MappingFragment StoreEntitySet="Units">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SymbolId" ColumnName="SymbolId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserStatuses">
+            <EntityTypeMapping TypeName="CropAccountingAppModel.UserStatus">
+              <MappingFragment StoreEntitySet="UserStatuses">
+                <ScalarProperty Name="UserStatusId" ColumnName="UserStatusId" />
+                <ScalarProperty Name="UserStatusName" ColumnName="UserStatusName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Visas">
+            <EntityTypeMapping TypeName="CropAccountingAppModel.Visa">
+              <MappingFragment StoreEntitySet="Visas">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CorpBankId" ColumnName="CorpBankId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SecUserTracks">
+            <EntityTypeMapping TypeName="CropAccountingAppModel.SecUserTrack">
+              <MappingFragment StoreEntitySet="SecUserTrack">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+                <ScalarProperty Name="ActionId" ColumnName="ActionId" />
+                <ScalarProperty Name="TrackDate" ColumnName="TrackDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

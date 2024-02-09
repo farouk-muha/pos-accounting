@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="POSAccounting.Views.UsersUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:POSAccounting.Views"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:p = "clr-namespace:POSAccounting.Properties"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="1100">
+    <UserControl.Resources>
+        <ContextMenu  x:Key="RowMenu" >
+            <MenuItem Header="{x:Static p:Resources.Refresh}" Command="{Binding Path=DataContext.RefreshCommand, RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}"/>
+            <MenuItem Header="{x:Static p:Resources.Add}" Command="{Binding Path=DataContext.AddCommand, RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}"/>
+            <MenuItem Header="{x:Static p:Resources.Status}" Command="{Binding Path=DataContext.StatusCommand, RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}" CommandParameter="{Binding Id}"/>
+            <MenuItem Header="{x:Static p:Resources.Edit}" Command="{Binding Path=DataContext.EditCommand, RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}" CommandParameter="{Binding Id}"/>
+            <MenuItem Header="{x:Static p:Resources.Password}" Command="{Binding Path=DataContext.PassCommand, RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}" CommandParameter="{Binding Id}"/>
+            <MenuItem Header="{x:Static p:Resources.Delete}" Command="{Binding Path=DataContext.DeleteCommand, RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}" CommandParameter="{Binding Id}"/>
+        </ContextMenu>
+        <Style x:Key="MyDG_RowStyle" TargetType="DataGridRow" BasedOn="{StaticResource {x:Type DataGridRow}}">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="ContextMenu" Value="{StaticResource RowMenu}" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource DG_BG_RowHover}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="DGCellColor" TargetType="{x:Type DataGridCell}" BasedOn="{StaticResource MyDG_ColumnStyle}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding LocalStatusId}" Value="1">
+                    <Setter Property="Background" Value="{StaticResource MatGreenBrush}" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding LocalStatusId}" Value="2">
+                    <Setter Property="Background" Value="{StaticResource MatRedBursh}" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <ContentControl x:Name="cardCount" Template="{StaticResource CardCount}" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center" />
+
+        <Button HorizontalAlignment="Right" Command="{Binding AddCommand}" VerticalAlignment="Center"  Style="{StaticResource MyBtnStyle}" Height="30" Width="30" >
+            <Path Data="M0.5,0 L0.5,1 M0,0.5 L1,0.5"  StrokeThickness="4" Stretch="Fill" Stroke="{StaticResource Gray1}" />
+        </Button>
+        <DataGrid x:Name="usersDataGrid" ItemsSource="{Binding Models}" RowStyle="{StaticResource MyDG_RowStyle}" CellStyle="{StaticResource MyDG_ColumnStyle}"   Style="{StaticResource MyDG}" ColumnHeaderStyle="{StaticResource MyHeaderStyle}" Grid.Row="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding UserName}"  Header="{x:Static p:Resources.UserName}" Width="120"/>
+                <DataGridTextColumn Binding="{Binding LastName}" Header="{x:Static p:Resources.FullName}" Width="200"/>
+                <DataGridTextColumn Binding="{Binding Phone}" Header="{x:Static p:Resources.Phone}" Width="120"/>
+                <DataGridTextColumn Binding="{Binding Address}" Header="{x:Static p:Resources.Address}" Width="200"/>
+                <DataGridTextColumn Binding="{Binding LocalRoleName}" Header="{x:Static p:Resources.Role}" Width="120"/>
+                <DataGridTextColumn CellStyle="{StaticResource DGCellColor}" Binding="{Binding LocalStatusName}" Header="{x:Static p:Resources.Status}" Width="120"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <ContentControl Template="{StaticResource PagingStackPanel}" Grid.Row="2" HorizontalAlignment="Center" />
+    </Grid>
+
+</UserControl>
