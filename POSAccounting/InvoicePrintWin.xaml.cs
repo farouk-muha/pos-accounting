@@ -68,7 +68,6 @@ namespace POSAccounting
 
         private void printBtn_Click(object sender, RoutedEventArgs e)
         {
-            MyPrint.ShowPrintPreview(panel);   
         }
     }
 }

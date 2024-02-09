@@ -365,7 +365,7 @@ namespace POSAccounting
                 return;
             }
             container.Content = null;
-            container.Content = new ReportsUC();
+            container.Content = null;
             model.Title = Properties.Resources.Reports;
         }
 
